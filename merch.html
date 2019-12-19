@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1">
+    <title>Мерч</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="MerchStyle.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<header>
+    <a href="index.html"><img src="image/logo.svg" alt=""></a>
+    <button></button>
+    <nav>
+        <a href="text.html">о&nbsp;нас</a>
+        <a href="merch.html">мерч</a>
+        <a href="Contacts.html">контакты</a>
+    </nav>
+</header>
+<div><img src="image/Group17.svg" alt="back"></div>
+<main>
+    <h1>Мерч</h1>
+    <p>Мы не только проводим познавательные и образовательные лекции, но и создаем уникальные брендированные и супер
+        стильные вещицы. Стать обладателем таких сокровищ можно участвуя в розыгрышах, ответив на вопрос,
+        который мы зададим в конце встречи RDCLR.HOME.
+        <br><br>
+        Также, вы можете оставить нам сообщение о желании приобрести  мерч за символическую плату.
+        Собранные средства пойдут на развитие нашего образовательного проекта DEADSIGN.</p>
+</main>
+
+<div>
+    <select>
+        <option>Стикеры</option>
+        <option>Все</option>
+        <option>Футболки</option>
+        <option>Значки</option>
+    </select>
+    <select>
+        <option>Цена</option>
+        <option>Популярность</option>
+        <option>Цена</option>
+    </select>
+</div>
+
+<div>
+    <section>
+        <div><img src="image/Merch/Triceps.svg" alt="Стикер Трицепс."></div>
+        <p>Стикер Triceps</p>
+        <p>20 ₽</p>
+    </section>
+
+    <section>
+        <div><img src="image/Merch/Triko.svg" alt="Стикер Трико."></div>
+        <p>Стикер Triko</p>
+        <p>30 ₽</p>
+    </section>
+
+    <section>
+        <div><img src="image/Merch/Triceratops.svg" alt="Стикер Трицератопс."></div>
+        <p>Стикер Triceratops</p>
+        <p>20 ₽</p>
+    </section>
+
+    <section>
+        <div><img src="image/Merch/Vorotnik.svg" alt="Стикер Воротник."></div>
+        <p>Стикер Vorotnik</p>
+        <p>10 ₽</p>
+    </section>
+
+    <section>
+        <div><img src="image/Merch/Trimmer.svg" alt="Стикер Триммер."></div>
+        <p>Стикер Trimmer</p>
+        <p>20 ₽</p>
+    </section>
+
+    <section>
+        <div><img src="image/Merch/RedCollar.svg" alt="Стикер Red Collar."></div>
+        <p>Стикер Red Collar</p>
+        <p>10 ₽</p>
+    </section>
+</div>
+
+<div class="arrows">
+    <img src="image/leftArrow.svg" alt="">
+    <img src="image/rightArrow.svg" alt="">
+</div>
+
+<footer>
+    <div>
+        <a href="">VK</a>
+        <a href="">FB</a>
+        <a href="">IG</a>
+    </div>
+    <nav>
+        <a href="text.html">о нас</a>
+        <a href="">мерч</a>
+        <a href="">контакты</a>
+    </nav>
+</footer>
+</body>
+<script>
+    'use strict';
+
+    let button = document.querySelector('button');
+    let menu = document.querySelector('nav');
+    let action = false;
+
+    button.addEventListener('click', function() {
+        if (action === false) {
+            menu.classList.add('active');
+            action = true;
+        }    else {
+            menu.classList.remove('active');
+            action = false;
+        }
+    })
+</script>
+</html>
+
+<!--
+    Стилизовать селекты йоу
+    использовать классы в уникальных элементах (!!)
+    закинуть с фигмы нормальные стикеры
+
+    overflow: hidden;
+-->

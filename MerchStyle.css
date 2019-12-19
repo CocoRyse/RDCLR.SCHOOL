@@ -1,0 +1,466 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, option, select, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, section{
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main + div {
+    display: grid;
+}
+
+div + div {
+    width: 70%;
+    display: grid;
+}
+
+div + div section {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    width: 466px;
+}
+
+div section p + p {
+    font-weight: normal;
+}
+
+div + div section div {
+    background: black;
+    display: flex;
+    align-items: center;
+}
+
+div + div section div img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media screen and (min-width: 1440px) {
+
+    .arrows {
+        margin-top: 100px;
+        margin-left: 61%;
+        margin-bottom: 107px;
+        display: flex;
+        width: 476px;
+        justify-content: space-between;
+    }
+
+    select {
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        color: #000000;
+
+        border: 2px solid #000000;
+    }
+
+    div + div section div {
+        width: 466px;
+        height: 333px;
+        box-shadow: 10px 10px #EC3332;
+    }
+
+    div + div {
+        grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
+        margin-left: 350px;
+        grid-column-gap: 60px;
+        grid-row-gap: 80px;
+    }
+
+    section img {
+        height: 333px;
+    }
+
+    div + div section p {
+        margin-top: 30px;
+    }
+
+    div section p + p{
+        margin-top: 0;
+    }
+
+    main + div {
+        width: 476px;
+        grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+        grid-column-gap: 60px;
+        grid-row-gap: 80px;
+        margin-left: 350px;
+        margin-top: 160px;
+        margin-bottom: 100px;
+    }
+
+    header {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 120%;
+        letter-spacing: 0.02em;
+
+        color: #000000;
+        position: sticky;
+        top: 40px;
+        left: 80px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        z-index: 1;
+        margin-left: 80px;
+    }
+
+    header button {
+        display: none;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 288px;
+        margin-right: 80px;
+    }
+
+    header nav a {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 120%;
+        letter-spacing: 0.02em;
+
+        color: #000000;
+    }
+
+    header + div {
+        position: sticky;
+        top: 245px;
+    }
+
+    header + div img {
+        padding-left: 80px;
+    }
+
+    main {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+
+        color: #000000;
+
+        width: 51%;
+        margin: 136px 0 0 348px;
+    }
+
+    main a {
+        color: #EC3332;
+    }
+
+    main img {
+        box-shadow: 10px 10px #EC3332;
+    }
+
+    main h1 {
+        font-weight: bold;
+        font-size: 58px;
+        text-transform: uppercase;
+        color: #EC3332;
+
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        margin-bottom: 40px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 80px 40px 80px;
+        border-top: 2px solid #000000;
+        padding-top: 24px;
+    }
+
+    footer div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        width: 140px;
+    }
+
+    footer nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 288px;
+    }
+
+    footer div a {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        color: #EC3332;
+    }
+
+    footer nav a {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 120%;
+        letter-spacing: 0.02em;
+        color: #000000;
+    }
+}
+
+/*_______________________________________________________ */
+
+@media screen and (max-width: 1439px) {
+
+    .arrows {
+        margin-top: 50px;
+        margin-left: 20px;
+        margin-bottom: 107px;
+        display: flex;
+        width: 276px;
+        justify-content: space-between;
+    }
+
+    select {
+        font-family: Montserrat,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        color: #000000;
+
+        border: 2px solid #000000;
+    }
+
+    section img {
+        height: 195px;
+    }
+
+    div + div section div {
+        width: 276px;
+        height: 195px;
+        box-shadow: 4px 4px #EC3332;
+    }
+
+    div + div section div img {
+        height: 50%;
+    }
+
+    div + div section p {
+        font-size: 14px;
+    }
+
+    div section p + p{
+        margin-top: 0;
+    }
+
+    div + div {
+        margin-left: 20px;
+        grid-column-gap: 30px;
+        grid-row-gap: 36px;
+        grid-template-rows: repeat(auto-fill, minmax(196px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+    }
+
+    main + div {
+        width: 280px;
+        margin-left: 20px;
+        margin-top: 80px;
+        margin-bottom: 50px;
+        grid-template-rows: repeat(auto-fill, minmax(56px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        grid-column-gap: 20px;
+        grid-row-gap: 40px;
+    }
+
+    header {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+
+        color: #000000;
+        margin-top: 30px;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: row;
+        z-index: 1;
+        justify-content: space-between;
+    }
+
+    header button {
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: none;
+        background-image: url("image/button.svg");
+        background-repeat: round;
+        margin-right: 20px;
+    }
+
+    button:checked {
+        width: 32px;
+        height: 32px;
+        background-color: transparent;
+        border: none;
+        background-repeat: round;
+        background-image: url("image/close.svg");
+        z-index: 1;
+    }
+
+    header a {
+        width: 52px;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    header nav.active{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #EC3332;
+    }
+
+    nav.active a {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 240%;
+        letter-spacing: 0.02em;
+        color: #000000;
+        width: 140px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    header + div {
+        margin-top: 50px;
+        left: 20px;
+    }
+
+    header + div img {
+        padding-left: 20px;
+        width: 20px;
+    }
+
+    main {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+
+        color: #000000;
+
+        width: 90%;
+        margin: 26px auto 0 20px;
+    }
+
+    main img {
+        box-shadow: 4px 4px #EC3332;
+        width: 90%;
+    }
+
+    main h1 {
+        font-weight: bold;
+        font-size: 28px;
+        text-transform: uppercase;
+        color: #EC3332;
+
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px 40px 20px;
+        border-top: 2px solid #000000;
+        padding-top: 24px;
+    }
+
+    footer div {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    footer div a {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 130%;
+        letter-spacing: 0.02em;
+        color: #EC3332;
+    }
+
+    footer nav a {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 210%;
+        letter-spacing: 0.02em;
+        color: #000000;
+    }
+}
