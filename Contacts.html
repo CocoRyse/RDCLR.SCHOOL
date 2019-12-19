@@ -62,7 +62,8 @@
     <h1>Записаться на&nbsp;RDCLR.HOME</h1>
     <form>
         <label class="select">
-            <select>
+            <select name="status">
+                <option>Выберите статус</option>
                 <option>Студент</option>
                 <option>Начинающий дизайнер</option>
                 <option>Практикующий дизайнер</option>
@@ -97,7 +98,11 @@
 <div class="popup">
     <div class="overlay"></div>
     <div class="popup-inner">
-        <div class="message-text">message</div>
+        <button class="popup-close"></button>
+        <div class="message-text">
+            <h2>Поздравляем!</h2>
+            <p>Вы записались на&nbsp;RDCLR.HOME</p>
+        </div>
     </div>
 </div>
 </body>
