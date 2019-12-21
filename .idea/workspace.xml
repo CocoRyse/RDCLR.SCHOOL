@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RedCollar" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -84,7 +87,9 @@
       <workItem from="1576506607823" duration="6199000" />
       <workItem from="1576571239462" duration="21035000" />
       <workItem from="1576734225815" duration="2815000" />
-      <workItem from="1576748616372" duration="11159000" />
+      <workItem from="1576748616372" duration="11916000" />
+      <workItem from="1576870593026" duration="2513000" />
+      <workItem from="1576925278409" duration="307000" />
     </task>
     <servers />
   </component>
@@ -101,6 +106,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1575910730734" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576873021630">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1576873021630" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1576775129125">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

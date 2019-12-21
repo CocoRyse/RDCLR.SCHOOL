@@ -50,6 +50,11 @@ window.addEventListener('DOMContentLoaded', function () {
                 prevScroll = scroll
             }
         }
+        if (hidden && pageYOffset === 0) {
+            header.classList.remove('hide');
+            hidden = false;
+            prevScroll = scroll
+        }
 
         prevScroll = scroll
     });
