@@ -9,10 +9,12 @@ window.addEventListener('DOMContentLoaded', function () {
         if (action === false) {
             if (menu) menu.classList.add('active');
             if (button) button.classList.add('active');
+            document.documentElement.classList.add('active');
             action = true;
         } else {
             if (menu) menu.classList.remove('active');
             if (button) button.classList.remove('active');
+            document.documentElement.classList.remove('active');
             action = false;
         }
     });
@@ -59,6 +61,8 @@ window.addEventListener('DOMContentLoaded', function () {
         prevScroll = scroll
     });
 
+
+
     const sliders = document.querySelectorAll('.slider');
 
     for (let i = 0; i < sliders.length; i++) {
@@ -70,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (slides.length < 2) return;
 
-        const wrapper = slider.querySelector('.slider-wrapper');
+        let wrapper = slider.querySelector('.slider-wrapper');
         const prevButton = slider.querySelector('.button-prev');
         const nextButton = slider.querySelector('.button-next');
         const sliderCounter = slider.querySelector('.slider-counter');
@@ -80,7 +84,8 @@ window.addEventListener('DOMContentLoaded', function () {
         let width = 0;
 
         function resize() {
-            width = slider.scrollWidth;
+            // width = slider.scrollWidth;
+            width = slides[0].scrollWidth;
         }
 
         resize();
@@ -89,13 +94,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
         slides[activeSlide].classList.add('active');
 
+        let wrapperHtml = wrapper.innerHTML;
+
         if (sliderCounter) sliderCounter.innerHTML =`<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
         if (prevButton) prevButton.addEventListener('click', function () {
 
             activeSlide--;
 
-            if (activeSlide < 0) activeSlide = slides.length - 1;
+            if (activeSlide < 1) activeSlide = slides.length - 1;
 
             if (sliderCounter) sliderCounter.innerHTML =`<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
@@ -177,27 +184,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
             window.addEventListener('resize', recount);
         }
-
-        window.addEventListener('resize', resize);
-    }
-
-    let cards = document.querySelectorAll('.card');
-    for (let i = 0; i < cards.length; i++) {
-        createCard(cards[i]);
-    }
-
-    function createCard(card) {
-        if (!card) return;
-
-        let width = 0;
-
-        function resize() {
-            width = window.innerWidth;
-            card.style.width = `${width}px`;
-        }
-
-        resize();
-
 
         window.addEventListener('resize', resize);
     }
@@ -341,6 +327,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const success = `
             <h2 class="black">Поздравляем!</h2>
             <p>Вы записались на&nbsp;RDCLR.HOME</p>`;
+
             const lose = `
             <h2>Ошибка!</h2>
             <p class="red">Проверьте корректность вводимых данных</p>`;
@@ -353,7 +340,38 @@ window.addEventListener('DOMContentLoaded', function () {
 
             document.documentElement.classList.add('popup-active');
             mess.innerHTML = success;
-            // вешать класс на весь html  и по этому лкассу делать оверфлоу хидден и показывать попап
         })
     }
+
+    function createReel(reel) {
+        if (!reel) return;
+
+        let clicked = false;
+        reel.addEventListener('click', function () {
+            if (clicked) return;
+
+            reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}" src="https://www.youtube.com/embed/d-DXr4cPLI4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            clicked = true;
+        });
+    }
+
+    let reels = document.querySelectorAll('.reel');
+    for (let i = 0; i < reels.length; i++)
+        createReel(reels[i]);
+
+    function createCard(card) {
+        if (!card) return;
+
+        let button = card.querySelector('button');
+
+        if (!button) return;
+
+        button.addEventListener('click', function () {
+            window.scrollTo(0, window.innerWidth < 800 ? 6700 : 5800);
+        })
+    }
+
+    let cards = document.querySelectorAll('.card');
+    for (let i = 0; i < cards.length; i++)
+        createCard(cards[i]);
 });

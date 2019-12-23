@@ -16,6 +16,39 @@ time, mark, audio, video, section{
     border:none;
 }
 
+.active {
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.long-slider-hidden {
+    overflow: hidden;
+}
+
+.long-slider-wrapper {
+    display: flex;
+}
+
+.long-slide p {
+    color: #000000;
+    margin-top: 5px;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.long-slider-buttons  {
+    display: flex;
+    width: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
 .border {
     border-top: 4px solid #000000;
     border-bottom: 4px solid #000000;
@@ -398,7 +431,7 @@ ol li::after {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    transition: transform ease 3s;
+    transition: transform ease 1s;
 }
 
 .slide {
@@ -454,8 +487,10 @@ ul {
     letter-spacing: 0.02em;
     text-transform: uppercase;
 
-    border-top: 4px solid #000000;
-    border-bottom: 4px solid #000000;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+
+    white-space: nowrap;
 }
 
 .marquee-block .marquee {
@@ -575,7 +610,39 @@ ul {
     color: #000000;
     background: #FFFFFF;
 }
+
+body.active {
+    overflow: hidden;
+}
+
 @media screen and (min-width: 801px){
+    .long-slider-wrapper{
+        flex-direction: row;
+    }
+
+    .long-slider-hidden {
+        margin-top: 60px;
+        width: 70%;
+        margin-left: 25%;
+    }
+
+    .long-slide {
+        padding-right: 60px;
+    }
+
+    .long-slide img {
+        background: #000000;
+        width: 466px;
+        height: 333px;
+        box-shadow: 10px 10px #EC3332;
+    }
+
+    .long-slide h3 {
+        margin-top: 30px;
+        color: #000000;
+        margin-left: 10px;
+    }
+
     .goods-arrows {
         margin-top: 100px;
         margin-left: 61.5%;
@@ -664,6 +731,10 @@ ul {
         top: -60px;
         margin-left: -40px;
         font-size: 20px;
+    }
+
+    .slider-counter .red {
+        font-weight: bold;
     }
 
     .back-arrow {
@@ -760,7 +831,7 @@ ul {
         grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
         grid-column-gap: 80px;
         grid-row-gap: 60px;
-        margin: 100px 0 222px 0;
+        margin: 100px -20% 222px 0;
     }
 
     section div {
@@ -797,7 +868,7 @@ ul {
     }
 
     .no-padding-marquee-block .wrapper {
-        margin-left: 20px;
+        padding-left: 20px;
     }
 
     .slider + .marquee-block {
@@ -1247,11 +1318,59 @@ ul {
         top: 10px;
         left: 0;
     }
+
+    .arrow-up {
+        margin-left: 25%;
+        margin-bottom: 50px;
+    }
+
+    .arrow-up img {
+        width: 5%;
+    }
+
 }
 /*sssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssssssssssssssssssssss*/
 /*ssssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssss*/
 /*ssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssss*/
 @media screen and (max-width: 800px) {
+    .long-slider-wrapper{
+        flex-direction: column;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .long-slider-hidden {
+        margin-top: 60px;
+        width: 70%;
+        margin-left: 20px;
+    }
+
+    .long-slide {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 30px;
+        position: relative;
+    }
+
+    .long-slide img {
+        background: #000000;
+        width: 250px;
+        box-shadow: 5px 5px #EC3332;
+    }
+
+    .long-slide h3 {
+        margin-top: 30px;
+        margin-left: 20px;
+        color: #000000;
+        display: block;
+    }
+
+    .long-slide p {
+        position: absolute;
+        top: 50px;
+        left: 260px;
+    }
+
     .goods-arrows {
         margin-top: 50px;
         margin-left: 20px;
@@ -1327,7 +1446,8 @@ ul {
     .popup-inner {
         width: 90%;
         height: 20%;
-        margin: 20px;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .popup-inner button {
@@ -1335,6 +1455,7 @@ ul {
         height: 20px;
         background-repeat: round;
     }
+
     .message-text {
         margin: 50px auto;
         width: 80%;
@@ -1603,6 +1724,10 @@ ul {
         top: -42px;
         margin-left: -40px;
         font-size: 20px;
+    }
+
+    .slider-counter .red {
+        font-weight: bold;
     }
 
     .back-arrow {
@@ -1911,7 +2036,7 @@ ul {
         font-size: 14px;
         height: 45px;
         box-shadow: 5px 5px #000000;
-        margin-bottom: 134px;
+        margin-bottom: 40px;
     }
 
     .checkbox {
@@ -1954,6 +2079,15 @@ ul {
         height: 180px;
         padding: 19px 12px;
         font-size: 14px;
+    }
+
+    .arrow-up {
+        margin-left: 20px;
+        margin-bottom: 50px;
+    }
+
+    .arrow-up img {
+        width: 5%;
     }
 
 }
