@@ -79,7 +79,6 @@ header nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 288px;
 }
 
 header a {
@@ -239,29 +238,39 @@ section div img {
         display: none;
     }
 
+    header nav {}
+
     .top {
         height: 800px;
     }
 
     .RDCLR {
-        left: 83px;
-        top: 176px;
+        /*left: 83px;*/
+        /*top: 176px;*/
     }
 
     .RDCLR-shadow {
-        left: 83px;
-        top: 176px;
+        width: 60%;
+        margin-left: 80px;
+        margin-top: 10%;
+        /*left: 83px;*/
+        /*top: 176px;*/
         transform: translateX(17px) translateY(11px);
     }
 
     .HOME {
-        left: 467px;
-        top: 404px;
+        width: 50%;
+        margin-top: 23%;
+        margin-left: 35%;
+        margin-bottom: 5%;
+        /*left: 467px;*/
+        /*top: 404px;*/
     }
 
     .HOME-shadow {
-        left: 467px;
-        top: 404px;
+        width: 50%;
+        margin-left: -50%;
+        margin-top: 23%;
         transform: translateX(17px) translateY(11px);
     }
 

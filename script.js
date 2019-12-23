@@ -161,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 if (wrapper)
                     wrapperWidth = wrapper.clientWidth;
 
-                count = width / wrapperWidth + 2;
+                count = width / wrapperWidth + 1;
 
                 div.innerHTML = innerHTML;
 
@@ -208,8 +208,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function createTop(top) {
-        let shadowRdclr = document.getElementById('RDCLR-shadow');
-        let shadowHome = document.getElementById('HOME-shadow');
+        let shadowRdclr = document.querySelector('.RDCLR-shadow');
+        let shadowHome = document.querySelector('.HOME-shadow');
 
         let left = 0;
         let ttop = 0;
@@ -234,7 +234,7 @@ window.addEventListener('DOMContentLoaded', function () {
             requestAnimationFrame(animate);
         }
 
-        top.addEventListener('mousemove', function(event) {
+        top.addEventListener('mousemove'|| 'touchmove', function(event) {
             if (!top)
                 return;
 

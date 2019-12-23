@@ -25,16 +25,16 @@ main {
     flex-direction: column;
 }
 
-main + div {
+.selectors {
     display: grid;
 }
 
-div + div {
+.goods {
     width: 70%;
     display: grid;
 }
 
-div + div section {
+.goods section {
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -45,26 +45,26 @@ div + div section {
     width: 466px;
 }
 
-div section p + p {
+.goods section p + p {
     font-weight: normal;
 }
 
-div + div section div {
+.goods section div {
     background: black;
     display: flex;
     align-items: center;
+    box-shadow: 10px 10px #EC3332;
 }
 
-div + div section div img {
+.goods section div img {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-
 @media screen and (min-width: 1440px) {
 
-    .arrows {
+    .goods-arrows {
         margin-top: 100px;
         margin-left: 61%;
         margin-bottom: 107px;
@@ -73,7 +73,8 @@ div + div section div img {
         justify-content: space-between;
     }
 
-    select {
+
+    .selectors select {
         font-family: Montserrat,sans-serif;
         font-style: normal;
         font-weight: normal;
@@ -85,13 +86,13 @@ div + div section div img {
         border: 2px solid #000000;
     }
 
-    div + div section div {
+    .goods section div {
         width: 466px;
         height: 333px;
         box-shadow: 10px 10px #EC3332;
     }
 
-    div + div {
+    .goods {
         grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
         margin-left: 350px;
@@ -99,19 +100,19 @@ div + div section div img {
         grid-row-gap: 80px;
     }
 
-    section img {
-        height: 333px;
+    .goods section img {
+        width: 333px;
     }
 
-    div + div section p {
+    .goods section p {
         margin-top: 30px;
     }
 
-    div section p + p{
+    .goods section p + p{
         margin-top: 0;
     }
 
-    main + div {
+    .selectors {
         width: 476px;
         grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
@@ -255,7 +256,7 @@ div + div section div img {
 
 @media screen and (max-width: 1439px) {
 
-    .arrows {
+    .goods-arrows {
         margin-top: 50px;
         margin-left: 20px;
         margin-bottom: 107px;
@@ -280,17 +281,17 @@ div + div section div img {
         height: 195px;
     }
 
-    div + div section div {
+    .goods section div {
         width: 276px;
         height: 195px;
         box-shadow: 4px 4px #EC3332;
     }
 
-    div + div section div img {
+    .goods section div img {
         height: 50%;
     }
 
-    div + div section p {
+    .goods section p {
         font-size: 14px;
     }
 
@@ -298,7 +299,7 @@ div + div section div img {
         margin-top: 0;
     }
 
-    div + div {
+    .goods {
         margin-left: 20px;
         grid-column-gap: 30px;
         grid-row-gap: 36px;
@@ -306,7 +307,7 @@ div + div section div img {
         grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
     }
 
-    main + div {
+    .selectors {
         width: 280px;
         margin-left: 20px;
         margin-top: 80px;

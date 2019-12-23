@@ -42,7 +42,7 @@ time, mark, audio, video, section{
 }
 
 .back-arrow {
-    position: absolute;
+    position: fixed;
 }
 
 a {
@@ -91,11 +91,11 @@ a {
     position: absolute;
 }
 
-section {
+main section {
     display: grid;
 }
 
-section div img {
+main section div img {
     float: left;
 }
 
@@ -238,7 +238,7 @@ form {
     position: relative;
 }
 
-select {
+main select {
     width: 100%;
     height: 100%;
     display: block;
@@ -248,6 +248,7 @@ select {
     line-height: 130%;
     letter-spacing: 0.02em;
     color: #000000;
+    background: #FFFFFF;
 }
 
 input {
@@ -465,6 +466,11 @@ ul {
     border: 2px solid #EC3332;
 }
 
+.goods p {
+    margin: 0;
+    padding: 0;
+}
+
 .popup {
     position: fixed;
     top: 0;
@@ -516,7 +522,126 @@ ul {
     border: none;
 }
 
-@media screen and (min-width: 1440px){
+.selectors {
+    display: grid;
+}
+
+.goods {
+    width: 70%;
+    display: grid;
+}
+
+.goods section {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    width: 466px;
+}
+
+.goods section div {
+    background: black;
+    display: flex;
+    align-items: center;
+}
+
+.goods section div img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.goods section p + p {
+    font-weight: normal;
+}
+
+.select-merch, .select-sort {
+    border: 2px solid #000000;
+    overflow: hidden;
+}
+
+.select-sort select, .select-merch select{
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 130%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    background: #FFFFFF;
+}
+@media screen and (min-width: 801px){
+    .goods-arrows {
+        margin-top: 100px;
+        margin-left: 61.5%;
+        margin-bottom: 107px;
+        display: flex;
+        width: 32.5%;
+        justify-content: space-between;
+    }
+
+    .goods-arrows p{
+        margin-top: 15px;
+    }
+
+    .goods section div {
+        width: 466px;
+        height: 333px;
+        box-shadow: 10px 10px #EC3332;
+    }
+
+    .goods img {
+        padding: 0;
+        height: 333px;
+    }
+
+    .goods div + .goods p {
+        margin-top: 30px;
+    }
+
+    .goods p + .goods p {
+        margin-top: -50px;
+    }
+
+    .goods {
+        grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
+        grid-column-gap: 50px;
+        grid-row-gap: 80px;
+
+        margin-left: 25%;
+    }
+
+    .goods section p {
+        margin-top: 30px;
+    }
+
+    .goods section p + p{
+        margin-top: 0;
+    }
+
+    .selectors {
+        width: 476px;
+        grid-template-rows: repeat(auto-fill, minmax(70px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+        grid-column-gap: 60px;
+        grid-row-gap: 80px;
+        margin-left: 25%;
+        margin-top: 160px;
+        margin-bottom: 100px;
+    }
+
+    .selectors select {
+        font-size: 20px;
+    }
+
+    /* КОНЕЦ МЕРЧА */
+
     .popup-inner button {
         width: 20px;
         height: 20px;
@@ -552,31 +677,48 @@ ul {
         margin-bottom: -75px;
     }
 
+    .top p {
+        margin-left: 35%;
+        width: 40%;
+        margin-top: 40%;
+        padding: 0;
+    }
+
     .RDCLR {
-        left: 83px;
-        top: 176px;
+        width: 60%;
+        margin-left: 80px;
+        margin-top: 10%;
+        /*width: 70%;*/
+        /*left: 83px;*/
+        /*top: 176px;*/
     }
 
     .RDCLR-shadow {
-        left: 83px;
-        top: 176px;
+        width: 60%;
+        margin-left: 80px;
+        margin-top: 10%;
+        /*left: 83px;*/
+        /*top: 176px;*/
         transform: translateX(17px) translateY(11px);
     }
 
     .HOME {
-        left: 467px;
-        top: 404px;
+        width: 50%;
+        margin-top: 23%;
+        margin-left: 35%;
+        margin-bottom: 5%;
     }
 
     .HOME-shadow {
-        left: 467px;
-        top: 404px;
+        width: 50%;
+        margin-left: 35%;
+        margin-top: 23%;
         transform: translateX(17px) translateY(11px);
     }
 
     .arrow{
-        left: 81px;
-        top: 671px;
+        margin-left: 80px;
+        margin-top: 40%;
     }
 
     .mobile {
@@ -584,9 +726,8 @@ ul {
     }
 
     .desktop {
-        width: 50%;
-        left: 464px;
-        top: 662px;
+        margin-left: 35%;
+        width: 60%;
 
         font-size: 20px;
 
@@ -594,31 +735,32 @@ ul {
     }
 
     .reel {
-        width: 90vw;
-        height: 676px;
+        width: 88vw;
+        height: 45vw;
 
         box-shadow: 10px 10px #EC3332;
 
-        margin: 220px 0 170px -270px;
+        margin: 220px 0 170px 5.5%;
     }
 
     .reel h2 {
-        padding-top: 313px;
-        margin-right: 100px;
+        width: 90%;
+        padding-top: 23%;
+        margin-right: 15%;
     }
 
     .reel h2:after {
         content: url("image/play.png");
-        top: 283px;
+        top: 78%;
         margin-left: 30px;
     }
 
-    section{
+    main section{
         grid-template-rows: repeat(auto-fill, minmax(107px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
         grid-column-gap: 80px;
         grid-row-gap: 60px;
-        margin: 100px -200px 222px 0;
+        margin: 100px 0 222px 0;
     }
 
     section div {
@@ -626,6 +768,7 @@ ul {
     }
 
     section p {
+        font-weight: bold;
         margin-left: 115px;
     }
 
@@ -634,15 +777,9 @@ ul {
         margin-right: 36px;
     }
 
-    .card {
-        flex-direction: row;
-        margin-left: -340px;
-        margin-bottom: 160px;
-    }
-
     .marquee-block {
         font-size: 36px;
-        margin-left: -340px;
+        margin-left: 0;
         overflow: hidden;
         padding-top: 12px;
         padding-bottom: 24px;
@@ -650,7 +787,7 @@ ul {
 
     .no-padding-marquee-block {
         font-size: 20px;
-        margin-left: -340px;
+        margin-left: 0;
         overflow: hidden;
         padding: 0;
     }
@@ -671,7 +808,7 @@ ul {
     .marquee-left{
         margin-top: 12px;
         white-space:nowrap;
-        /*overflow:hidden;*/
+        overflow:hidden;
     }
 
     .marquee-left .wrapper {
@@ -714,6 +851,13 @@ ul {
         100%{transform: translate(0, 0)}
     }
 
+    .card {
+        flex-direction: row;
+        margin-left: 0;
+        margin-bottom: 160px;
+        min-height: 1240px;
+    }
+
     .picture img {
         margin-top: 96px;
         width: 100%;
@@ -721,39 +865,39 @@ ul {
 
     .picture {
         flex-direction: column;
-        min-width: 486px;
-        min-height: 1100px;
+        width: 155%;
     }
 
     .picture h2{
         margin-top: 34px;
-        margin-left: 80px;
+        margin-left: 15%;
     }
 
     .picture p {
-        margin-left: 80px;
+        margin-left: 15%;
         margin-top: 2px;
     }
 
     .description h1 {
-        margin-left: 130px;
+        margin-left: 13%;
         margin-top: 160px;
     }
 
     .description h2 {
-        margin-left: 130px;
+        margin-left: 13%;
         margin-top: 24px;
+        width: 70%;
     }
 
     .description h3 {
-        margin-left: 130px;
+        margin-left: 13%;
         margin-top: 60px;
         text-transform: none;
     }
 
     .description p {
-        margin-left: 130px;
-        width: 55%;
+        margin-left: 13%;
+        width: 65%;
         margin-top: 20px;
     }
 
@@ -768,7 +912,7 @@ ul {
         box-shadow: 10px 10px #000000;
 
         margin-top: 70px;
-        margin-left: 130px;
+        margin-left: 13%;
     }
 
     header, footer {
@@ -784,11 +928,11 @@ ul {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 23%;
+        width: 30%;
     }
 
     main {
-        margin-left: 340px;
+        margin-left: 25%;
         margin-top: 235px;
         width: 55%;
     }
@@ -897,6 +1041,10 @@ ul {
         margin-top: 70px;
     }
 
+    h2 + .how-to-find {
+         margin-top: 40px;
+    }
+
     h2 + .map {
         margin-top: 40px;
     }
@@ -928,10 +1076,26 @@ ul {
         width: 13%;
     }
 
-    .map {
+    .how-to-find img{
         box-shadow: 10px 10px #EC3332;
         width: 100%;
         height: 300px;
+    }
+
+    .how-to-find + h1 {
+        margin-top: 160px;
+    }
+
+    .how-to-find p {
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
+
+    .map {
+        display: block;
+        box-shadow: 10px 10px #EC3332;
+        width: 100%;
+        height: 30vw;
     }
 
     .map + p {
@@ -1001,7 +1165,7 @@ ul {
         grid-row-gap: 40px;
     }
 
-    select {
+    main select {
         font-size: 20px;
         padding-left: 15px;
     }
@@ -1078,11 +1242,94 @@ ul {
         justify-content: space-between;
         width: 25%;
     }
+
+    .arrow {
+        top: 10px;
+        left: 0;
+    }
 }
 /*sssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssssssssssssssssssssss*/
 /*ssssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssss*/
 /*ssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssss*/
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 800px) {
+    .goods-arrows {
+        margin-top: 50px;
+        margin-left: 20px;
+        margin-bottom: 107px;
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    .goods-arrows p{
+        margin-top: 15px;
+    }
+
+    .goods section{
+        width: 70%;
+    }
+
+    .goods section div {
+        width: 100%;
+        height: 195px;
+        box-shadow: 5px 5px #EC3332;
+    }
+
+    .goods img {
+        width: 60%;
+        padding: 0;
+    }
+
+    .goods div + .goods p {
+        margin-top: 30px;
+    }
+
+    .goods p + .goods p {
+        margin-top: 5px;
+    }
+
+    .goods {
+        grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
+        grid-column-gap: 0;
+        grid-row-gap: 36px;
+
+        margin-left: 5%;
+    }
+
+    .goods section p {
+        margin-top: 24px;
+        font-size: 14px;
+    }
+
+    .goods section p + p{
+        margin-top: 0;
+    }
+
+    .selectors {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 130%;
+        width: 90%;
+        grid-template-rows: repeat(auto-fill, minmax(56px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        margin-left: 5%;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
+    /* КОНЕЦ МЕРЧА */
+
+    .popup-inner {
+        width: 90%;
+        height: 20%;
+        margin: 20px;
+    }
+
     .popup-inner button {
         width: 20px;
         height: 20px;
@@ -1107,41 +1354,44 @@ ul {
 
     .RDCLR {
         width: 276px;
-        left: 20px;
+        left: 10%;
         top: 159px;
     }
 
     .RDCLR-shadow {
         width: 276px;
-        left: 20px;
+        left: 10%;
         top: 159px;
         transform: translateX(17px) translateY(11px);
     }
 
     .HOME {
         width: 224px;
-        left: 72px;
+        left: 20%;
         top: 218px;
     }
 
     .HOME-shadow {
         width: 224px;
-        left: 72px;
+        left: 20%;
         top: 218px;
         transform: translateX(17px) translateY(11px);
     }
 
     .arrow{
         left: 20px;
-        top: 427px;
-        width: 22px;
+        top: 400px;
+        width: 10%;
+    }
+
+    .arrow img {
+        width: 80%;
+        max-width: 50px;
     }
 
     .mobile {
-
-        left: 72px;
+        left: 20%;
         top: 296px;
-
     }
 
     .desktop {
@@ -1149,28 +1399,28 @@ ul {
     }
 
     .reel {
-        width: 276px;
-        height: 146px;
+        width: 90%;
+        height: 35vw;
 
         box-shadow: 5px 5px #EC3332;
 
-        margin: 100px 0 85px 0;
+        margin: 100px 0 85px 20px;
     }
 
     .reel h2 {
-        padding-top: 52px;
-        margin-left: 25%;
+        margin: 0 auto;
+        padding-top: 10%;
         width: 50%;
         text-align: left;
     }
 
     .reel h2:after {
         content: url("image/play-mobile.svg");
-        top: 50px;
+        margin-top: -25px;
         margin-left: 20px;
     }
 
-    section{
+    main section{
         grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
         grid-column-gap: 30px;
@@ -1178,15 +1428,11 @@ ul {
         margin: 40px 0 100px 0;
     }
 
-    section div {
+    main section div {
         width: 276px;
     }
 
-    section p {
-
-    }
-
-    section div img{
+    main section div img{
         margin-right: 16px;
         margin-top: 5px;
         width: 30px;
@@ -1194,13 +1440,11 @@ ul {
 
     .card {
         flex-direction: column;
-        margin-left: -20px;
         margin-bottom: 80px;
     }
 
     .marquee-block {
         font-size: 20px;
-        margin-left: -20px;
         overflow: hidden;
         padding-top: 12px;
         padding-bottom: 24px;
@@ -1208,7 +1452,6 @@ ul {
 
     .no-padding-marquee-block {
         font-size: 20px;
-        margin-left: -20px;
         overflow: hidden;
         padding: 0;
     }
@@ -1219,6 +1462,8 @@ ul {
 
     .no-padding-marquee-block .wrapper {
         margin-left: 20px;
+        font-size: 14px;
+        height: 25px;
     }
 
     .slider + .marquee-block {
@@ -1361,9 +1606,15 @@ ul {
     }
 
     .back-arrow {
+        position: absolute;
         top: 105px;
         left: 20px;
-        width: 5%;
+        width: 10%;
+    }
+
+    .back-arrow img {
+        width: 100%;
+        max-width: 50px;
     }
 
     header, footer {
@@ -1525,6 +1776,10 @@ ul {
         margin-top: 50px;
     }
 
+    h2 + .how-to-find {
+        margin-top: 25px;
+    }
+
     h2 + .map {
         margin-top: 25px;
     }
@@ -1548,10 +1803,25 @@ ul {
         margin-top: 50px;
     }
 
-    .map {
+    .how-to-find img {
         box-shadow: 5px 5px #EC3332;
         width: 100%;
         height: 100px;
+    }
+
+    .how-to-find p {
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .how-to-find + h1 {
+        margin-top: 80px;
+    }
+
+    .map {
+        box-shadow: 5px 5px #EC3332;
+        width: 100%;
+        height: 25vw;
     }
 
     .map + p {
@@ -1621,7 +1891,7 @@ ul {
         grid-row-gap: 20px;
     }
 
-    select {
+    main select {
         font-size: 14px;
         padding-left: 8px;
     }
@@ -1685,6 +1955,10 @@ ul {
         padding: 19px 12px;
         font-size: 14px;
     }
+
+}
+
+@media screen and (max-width: 1000px){
 
     footer {
         height: 200px;
