@@ -16,6 +16,10 @@ time, mark, audio, video, section{
     border:none;
 }
 
+.button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after{
+    cursor: pointer;
+}
+
 .active {
     overflow: hidden;
 }
