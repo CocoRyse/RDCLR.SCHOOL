@@ -353,6 +353,17 @@ window.addEventListener('DOMContentLoaded', function () {
             reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}" src="https://www.youtube.com/embed/d-DXr4cPLI4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
             clicked = true;
         });
+
+
+        function resize() {
+            let iframe = reel.querySelector('iframe')
+            if (!iframe) return;
+
+            iframe.width = reel.clientWidth;
+            iframe.height = reel.clientHeight;
+        }
+
+        window.addEventListener('resize', resize);
     }
 
     let reels = document.querySelectorAll('.reel');
