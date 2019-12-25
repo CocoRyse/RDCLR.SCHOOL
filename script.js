@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let menu = document.querySelector('nav');
     let action = false;
 
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         if (action === false) {
             if (menu) menu.classList.add('active');
             if (button) button.classList.add('active');
@@ -18,7 +18,9 @@ window.addEventListener('DOMContentLoaded', function () {
             action = false;
         }
     });
+});
 
+window.addEventListener('DOMContentLoaded', function () {
     let header = document.querySelector('header');
     let prevScroll = pageYOffset;
     let scroll = pageYOffset;
@@ -60,9 +62,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         prevScroll = scroll
     });
+});
 
-
-
+window.addEventListener('DOMContentLoaded', function () {
     const sliders = document.querySelectorAll('.slider');
 
     for (let i = 0; i < sliders.length; i++) {
@@ -96,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         let wrapperHtml = wrapper.innerHTML;
 
-        if (sliderCounter) sliderCounter.innerHTML =`<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
+        if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
         if (prevButton) prevButton.addEventListener('click', function () {
 
@@ -104,7 +106,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             if (activeSlide < 1) activeSlide = slides.length - 1;
 
-            if (sliderCounter) sliderCounter.innerHTML =`<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
+            if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
             wrapper.style.transform = `translate3d(-${width * activeSlide}px, 0, 0)`;
         });
@@ -115,20 +117,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
             if (activeSlide > slides.length - 1) activeSlide = 0;
 
-            if (sliderCounter) sliderCounter.innerHTML =`<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
+            if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
             wrapper.style.transform = `translate3d(-${width * activeSlide}px, 0, 0)`;
         });
 
         window.addEventListener('resize', resize);
     }
+});
 
+window.addEventListener('DOMContentLoaded', function () {
     let marqueeBlocks = document.querySelectorAll('.marquee-block');
-    for (let i = 0; i < marqueeBlocks.length; i++){
+    for (let i = 0; i < marqueeBlocks.length; i++) {
         createMarqueeBlock(marqueeBlocks[i]);
     }
     let noPaddingMarqueeBlocks = document.querySelectorAll('.no-padding-marquee-block');
-    for (let i = 0; i < marqueeBlocks.length; i++){
+    for (let i = 0; i < marqueeBlocks.length; i++) {
         createMarqueeBlock(noPaddingMarqueeBlocks[i]);
     }
 
@@ -150,7 +154,7 @@ window.addEventListener('DOMContentLoaded', function () {
         resize();
 
 
-        for (let i = 0; i < divs.length; i++){
+        for (let i = 0; i < divs.length; i++) {
             createMarqueeDiv(divs[i]);
         }
 
@@ -187,13 +191,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
         window.addEventListener('resize', resize);
     }
+});
 
+window.addEventListener('DOMContentLoaded', function () {
     let tops = document.querySelectorAll('.top');
     for (let i = 0; i < tops.length; i++) {
         createTop(tops[i]);
     }
 
     function createTop(top) {
+        if (!top) return;
+
         let shadowRdclr = document.querySelector('.RDCLR-shadow');
         let shadowHome = document.querySelector('.HOME-shadow');
 
@@ -220,10 +228,7 @@ window.addEventListener('DOMContentLoaded', function () {
             requestAnimationFrame(animate);
         }
 
-        top.addEventListener('mousemove'|| 'touchmove', function(event) {
-            if (!top)
-                return;
-
+        top.addEventListener('mousemove', function (event) {
             let centerX = window.innerWidth / 2;
             let centerY = top.clientHeight / 2;
 
@@ -233,8 +238,7 @@ window.addEventListener('DOMContentLoaded', function () {
             if (window.innerWidth >= 1440) {
                 kh = -17;
                 kv = -11;
-            }
-            else {
+            } else {
                 kh = -11;
                 kv = -6;
             }
@@ -246,8 +250,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
         animate();
     }
+})
 
-    function createValidate () {
+window.addEventListener('DOMContentLoaded', function () {
+    function createValidate() {
         const forms = document.querySelectorAll('form');
         const messageField = document.querySelector('.message-text');
         const overlay = document.querySelector('.overlay');
@@ -281,7 +287,7 @@ window.addEventListener('DOMContentLoaded', function () {
         function validate() {
             let result = true;
 
-            if (form.status.selectedIndex === 0){
+            if (form.status.selectedIndex === 0) {
                 let el = form.querySelector('.select');
                 el.classList.add('error');
                 el.addEventListener('change', function () {
@@ -295,10 +301,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
                 // if (el.dataset.required) continue;
 
-                if (el.type === 'email'    ||
-                    el.type === 'tel'      ||
+                if (el.type === 'email' ||
+                    el.type === 'tel' ||
                     el.type === 'text') {
-                // textarea не валидирую, потому что логично, что это не обязательное поле и его можно оставить пустым
+                    // textarea не валидирую, потому что логично, что это не обязательное поле и его можно оставить пустым
                     if (!el.value) {
                         el.classList.add('error');
                         el.addEventListener('change', function () {
@@ -309,14 +315,14 @@ window.addEventListener('DOMContentLoaded', function () {
                     console.log(el.value);
                 }
                 if (el.type === 'checkbox')
-                    if (!el.checked){
-                    let checkbox = form.querySelector('.checkbox');
-                    checkbox.classList.add('error');
-                    el.addEventListener('change', function () {
-                        checkbox.classList.remove('error');
-                    });
-                    result = false;
-                }
+                    if (!el.checked) {
+                        let checkbox = form.querySelector('.checkbox');
+                        checkbox.classList.add('error');
+                        el.addEventListener('change', function () {
+                            checkbox.classList.remove('error');
+                        });
+                        result = false;
+                    }
             }
             // дата атрибуты очень удобная шутка, которые доступные в объекте датасет
             return result;
@@ -333,8 +339,8 @@ window.addEventListener('DOMContentLoaded', function () {
             <p class="red">Проверьте корректность вводимых данных</p>`;
 
             if (!validate()) {
-                document.documentElement.classList.add('popup-active');
-                mess.innerHTML = lose;
+                // document.documentElement.classList.add('popup-active');
+                // mess.innerHTML = lose;
                 return;
             }
 
@@ -342,7 +348,9 @@ window.addEventListener('DOMContentLoaded', function () {
             mess.innerHTML = success;
         })
     }
+});
 
+window.addEventListener('DOMContentLoaded', function () {
     function createReel(reel) {
         if (!reel) return;
 

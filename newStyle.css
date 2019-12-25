@@ -16,6 +16,10 @@ time, mark, audio, video, section{
     border:none;
 }
 
+a:hover {
+    color: #EC3332;
+}
+
 .button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after{
     cursor: pointer;
 }
@@ -1242,7 +1246,7 @@ body.active {
 
     main select {
         font-size: 20px;
-        padding-left: 15px;
+        padding: 15px;
     }
 
     input {
@@ -1323,13 +1327,9 @@ body.active {
         left: 0;
     }
 
-    .arrow-up {
-        margin-left: 25%;
-        margin-bottom: 50px;
-    }
 
-    .arrow-up img {
-        width: 5%;
+    .arrow-up {
+        visibility: hidden
     }
 
 }
