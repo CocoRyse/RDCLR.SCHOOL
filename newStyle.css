@@ -15,10 +15,10 @@ time, mark, audio, video, section{
     padding:0;
     border:none;
 }
-
+/* ну ховеры ещё предстоит поправить
 a:hover {
     color: #EC3332;
-}
+} */
 
 .button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after{
     cursor: pointer;
