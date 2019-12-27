@@ -15,12 +15,16 @@ time, mark, audio, video, section{
     padding:0;
     border:none;
 }
-/* ну ховеры ещё предстоит поправить
-a:hover {
-    color: #EC3332;
-} */
 
-.button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after{
+nav a:hover {
+    text-decoration: underline;
+}
+
+main a:hover {
+    color: #EC3332;
+}
+
+.button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after, button, .reel h2::after{
     cursor: pointer;
 }
 
@@ -68,6 +72,10 @@ a:hover {
 
 .bg-white {
     background-color: #FFFFFF;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 .red {
@@ -244,6 +252,13 @@ p {
 
 .time {
     display: grid;
+}
+
+.time div {
+    border: 2px solid #EC3332;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .soc-network {
@@ -834,6 +849,10 @@ body.active {
         margin-left: 30px;
     }
 
+    .reel + main, .card + main {
+        margin-top: 0;
+    }
+
     main section{
         grid-template-rows: repeat(auto-fill, minmax(107px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
@@ -1091,9 +1110,20 @@ body.active {
     }
 
     .time {
-        grid-template-rows: repeat(auto-fill, minmax(94px, 1fr));
-        grid-template-columns: repeat(auto-fill, minmax(66px, 1fr));
-        grid-gap: 55px;
+        margin-right: -25%;
+        grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        grid-gap: 30px;
+    }
+
+    .time div {
+        width: 90px;
+        height: 60px;
+        box-shadow: 4px 4px #EC3332;
+    }
+
+    .time div p {
+        padding: 20px;
     }
 
     h1 + h2 {
@@ -1876,9 +1906,19 @@ body.active {
     }
 
     .time {
-        grid-template-rows: repeat(auto-fit, minmax(60px, 1px));
-        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(40px, 1px));
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
         grid-gap: 12px;
+    }
+
+    .time div {
+        width: 60px;
+        height: 40px;
+        box-shadow: 2px 2px #EC3332;
+    }
+
+    .time div p {
+        padding: 12px;
     }
 
     h1 + h2 {
