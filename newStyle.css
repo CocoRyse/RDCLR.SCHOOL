@@ -22,6 +22,8 @@ nav a:hover {
 
 main a:hover {
     color: #EC3332;
+
+    transition: 0.2s ease;
 }
 
 .button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after, button, .reel h2::after{
