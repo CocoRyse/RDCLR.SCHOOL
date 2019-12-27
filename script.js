@@ -32,6 +32,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!header)
             return;
 
+        if (window.innerWidth < 800) return;
+
         scroll = pageYOffset;
 
         if ((header) && !hidden)
@@ -261,6 +263,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (!messageField || !overlay) return;
 
+        console.log('Борис ельцин');
+
         overlay.addEventListener('click', function () {
             document.documentElement.classList.remove('popup-active');
             // по хорошему нельзя вешать классы на html, так как это может спровоцировать перерисовку всей страницы
@@ -310,6 +314,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         });
                         result = false;
                     }
+                    console.log(el.value);
                 }
                 if (el.type === 'checkbox')
                     if (!el.checked) {
