@@ -98,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         slides[activeSlide].classList.add('active');
 
-        let wrapperHtml = wrapper.innerHTML;
+        // let wrapperHtml = wrapper.innerHTML;
 
         if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
 
@@ -149,8 +149,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
         function resize() {
             width = window.innerWidth;
-            if (block)
-                block.style.width = `${width}px`;
+
+            // if (block)
+                // block.style.width = `${width}px`;
         }
 
         resize();
@@ -247,12 +248,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
             nLeft = kh * Math.tanh((event.clientX - centerX) / 500);
             nTop = kv * Math.tanh((event.clientY - centerY) / 50);
-            //
         });
 
         animate();
     }
-})
+});
 
 window.addEventListener('DOMContentLoaded', function () {
     function createValidate() {
@@ -262,8 +262,6 @@ window.addEventListener('DOMContentLoaded', function () {
         const button = document.querySelector('.popup-close');
 
         if (!messageField || !overlay) return;
-
-        console.log('Борис ельцин');
 
         overlay.addEventListener('click', function () {
             document.documentElement.classList.remove('popup-active');
@@ -360,13 +358,14 @@ window.addEventListener('DOMContentLoaded', function () {
         reel.addEventListener('click', function () {
             if (clicked) return;
 
-            reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}" src="https://www.youtube.com/embed/d-DXr4cPLI4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}" src="https://www.youtube.com/embed/d-DXr4cPLI4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             clicked = true;
         });
 
 
         function resize() {
-            let iframe = reel.querySelector('iframe')
+            let iframe = reel.querySelector('iframe');
+
             if (!iframe) return;
 
             iframe.width = reel.clientWidth;
@@ -395,4 +394,9 @@ window.addEventListener('DOMContentLoaded', function () {
     let cards = document.querySelectorAll('.card');
     for (let i = 0; i < cards.length; i++)
         createCard(cards[i]);
+});
+
+// модный слайдео
+window.addEventListener('DOMContentLoaded', function () {
+
 });
