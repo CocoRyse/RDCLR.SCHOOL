@@ -355,6 +355,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!reel) return;
 
         let clicked = false;
+
         reel.addEventListener('click', function () {
             if (clicked) return;
 
@@ -396,7 +397,69 @@ window.addEventListener('DOMContentLoaded', function () {
         createCard(cards[i]);
 });
 
-// модный слайдео
+// сочный слайдер с главной
 window.addEventListener('DOMContentLoaded', function () {
+    let sliders = document.querySelectorAll('.long-slider');
+    for (let i = 0; i < sliders.length; i++)
+        createSlider(sliders[i]);
 
+    function createSlider(slider) {
+        if (!slider) return;
+
+        let nextButton = slider.querySelector('.button-next');
+        let prevButton = slider.querySelector('.button-prev');
+        let wrapper = slider.querySelector('.long-slider-wrapper');
+        let slides = slider.querySelectorAll('.long-slide');
+
+        if (!nextButton && !prevButton || !slides) return;
+
+        const wrapperHTML = wrapper.innerHTML;
+
+        let width = 0;
+        let activeSlide = 0;
+
+        function resize() {
+            // width = slider.scrollWidth;
+            width = slides[activeSlide].scrollWidth;
+        }
+
+        resize();
+        wrapper.innerHTML = wrapperHTML + wrapperHTML + wrapperHTML;
+
+        if (prevButton) prevButton.addEventListener('click', function () {
+
+            activeSlide--;
+
+            if (activeSlide < 0) {
+                activeSlide = slides.length - 1;
+                wrapper.classList.add('no-animation');
+
+                wrapper.style.transform = `translate3d(-${width * (activeSlide + 1)}px, 0, 0)`;
+
+                wrapper.offsetHeight;
+                wrapper.classList.remove('no-animation');
+            }
+
+            wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+        });
+
+        if (nextButton) nextButton.addEventListener('click', function () {
+
+            activeSlide++;
+
+            if (activeSlide > 2 * slides.length - 1) {
+                activeSlide = slides.length;
+                wrapper.classList.add('no-animation');
+
+                wrapper.style.transform = `translate3d(-${width * (activeSlide - 1)}px, 0, 0)`;
+
+                wrapper.offsetHeight;
+                wrapper.classList.remove('no-animation');
+            }
+
+            wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+        });
+
+        window.addEventListener('resize', resize);
+    }
 });

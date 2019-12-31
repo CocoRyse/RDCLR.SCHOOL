@@ -16,6 +16,13 @@ time, mark, audio, video, section{
     border:none;
 }
 
+.no-animation {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
 nav a:hover {
     text-decoration: underline;
 }
@@ -46,6 +53,7 @@ main a:hover {
 
 .long-slider-wrapper {
     display: flex;
+    transition: transform ease 1s;
 }
 
 .long-slide p {
