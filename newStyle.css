@@ -718,7 +718,7 @@ body.active {
     }
 
     .goods {
-        grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(255px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
         grid-column-gap: 50px;
         grid-row-gap: 80px;
@@ -1468,7 +1468,7 @@ body.active {
     }
 
     .goods {
-        grid-template-rows: repeat(auto-fill, minmax(333px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(255px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(466px, 1fr));
         grid-column-gap: 0;
         grid-row-gap: 36px;
@@ -1529,7 +1529,7 @@ body.active {
 
     .top {
         max-height: 480px;
-        height: 100vh;
+        /*height: 100vh;*/
         margin-bottom: -75px;
     }
 

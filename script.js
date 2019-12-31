@@ -398,7 +398,6 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 // сочный слайдер с главной
-// пока что работает только с полной версией
 window.addEventListener('DOMContentLoaded', function () {
     let sliders = document.querySelectorAll('.long-slider');
     for (let i = 0; i < sliders.length; i++)
@@ -421,7 +420,6 @@ window.addEventListener('DOMContentLoaded', function () {
         let activeSlide = 0;
 
         function resize() {
-            // width = slider.scrollWidth;
             width = slides[activeSlide].scrollWidth;
             height = slides[activeSlide].scrollHeight;
         }
