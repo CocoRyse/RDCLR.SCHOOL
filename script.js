@@ -398,6 +398,7 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 // сочный слайдер с главной
+// пока что работает только с полной версией
 window.addEventListener('DOMContentLoaded', function () {
     let sliders = document.querySelectorAll('.long-slider');
     for (let i = 0; i < sliders.length; i++)
@@ -416,11 +417,13 @@ window.addEventListener('DOMContentLoaded', function () {
         const wrapperHTML = wrapper.innerHTML;
 
         let width = 0;
+        let height = 0;
         let activeSlide = 0;
 
         function resize() {
             // width = slider.scrollWidth;
             width = slides[activeSlide].scrollWidth;
+            height = slides[activeSlide].scrollHeight;
         }
 
         resize();
@@ -434,13 +437,19 @@ window.addEventListener('DOMContentLoaded', function () {
                 activeSlide = slides.length - 1;
                 wrapper.classList.add('no-animation');
 
-                wrapper.style.transform = `translate3d(-${width * (activeSlide + 1)}px, 0, 0)`;
+                if (window.innerWidth > 800)
+                    wrapper.style.transform = `translate3d(-${width * (activeSlide + 1)}px, 0, 0)`;
+                else
+                    wrapper.style.transform = `translate3d(0, -${height * (activeSlide + 1)}px, 0)`;
 
                 wrapper.offsetHeight;
                 wrapper.classList.remove('no-animation');
             }
 
-            wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+            if (window.innerWidth > 800)
+                wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+            else
+                wrapper.style.transform =  `translate3d(0, -${height * activeSlide}px, 0)`;
         });
 
         if (nextButton) nextButton.addEventListener('click', function () {
@@ -451,13 +460,19 @@ window.addEventListener('DOMContentLoaded', function () {
                 activeSlide = slides.length;
                 wrapper.classList.add('no-animation');
 
-                wrapper.style.transform = `translate3d(-${width * (activeSlide - 1)}px, 0, 0)`;
+                if (window.innerWidth > 800)
+                    wrapper.style.transform = `translate3d(-${width * (activeSlide - 1)}px, 0, 0)`;
+                else
+                    wrapper.style.transform = `translate3d(0, -${height * (activeSlide - 1)}px, 0)`;
 
                 wrapper.offsetHeight;
                 wrapper.classList.remove('no-animation');
             }
 
-            wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+            if (window.innerWidth > 800)
+                wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
+            else
+                wrapper.style.transform =  `translate3d(0, -${height * activeSlide}px, 0)`;
         });
 
         window.addEventListener('resize', resize);

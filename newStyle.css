@@ -681,6 +681,10 @@ body.active {
         margin-left: 10px;
     }
 
+    .long-slider-buttons {
+        margin-left: 25%;
+    }
+
     .goods-arrows {
         margin-top: 100px;
         margin-left: 61.5%;
@@ -1387,14 +1391,14 @@ body.active {
 
     .long-slider-wrapper{
         flex-direction: column;
-        height: 400px;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
     .long-slider-hidden {
         margin-top: 60px;
         width: 70%;
         margin-left: 20px;
+        height: 400px;
     }
 
     .long-slide {
@@ -1421,6 +1425,10 @@ body.active {
         position: absolute;
         top: 50px;
         left: 260px;
+    }
+
+    .long-slider-buttons {
+        margin-left: 20px;
     }
 
     .goods-arrows {
