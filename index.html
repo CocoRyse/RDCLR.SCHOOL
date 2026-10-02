@@ -1,157 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1">
-    <title>Главная</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="newStyle.css">
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RDCLR.HOME — серия офлайн-мероприятий от Red Collar</title>
+    <meta name="description" content="Серия офлайн-мероприятий от Red Collar: короткие лекции и живые обсуждения прямо в офисе студии. Дизайн, разработка, менеджмент.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 <header>
-    <a href="index.html"><img src="image/logoMain.png" alt=""></a>
-    <button></button>
-    <nav>
+    <a href="index.html"><img src="image/logoMain.png" alt="RDCLR — на главную"></a>
+    <button type="button" aria-label="Открыть меню"></button>
+    <nav aria-label="Основная навигация">
         <a href="text.html">о&nbsp;нас</a>
         <a href="merch.html">мерч</a>
-        <a href="Contacts.html">контакты</a>
+        <a href="contacts.html">контакты</a>
     </nav>
 </header>
 
 <div class="top">
-    <img class="RDCLR-shadow" src="image/RDCLR.shadow.svg" alt="">
+    <img class="RDCLR-shadow" src="image/RDCLR.shadow.svg" alt="" aria-hidden="true">
     <img class="RDCLR" src="image/RDCLR..svg" alt="RDCLR.">
 
-    <img class="HOME-shadow" src="image/HOMEshadow.svg" alt="">
+    <img class="HOME-shadow" src="image/HOMEshadow.svg" alt="" aria-hidden="true">
     <img class="HOME" src="image/HOME.svg" alt="HOME">
 
-    <a href="#anchor" class="arrow"><img src="image/arrowDown.svg" alt="вниз"></a>
+    <a href="#anchor" class="arrow" aria-label="К следующему разделу"><img src="image/arrowDown.svg" alt="" aria-hidden="true"></a>
 
     <p class="desktop">Серия офлайн-мероприятий от Red Collar — короткие лекции
         и живые обсуждения прямо у нас в офисе. Минимум гостей, неформальная обстановка. Ждём дома!</p>
-    <p class="mobile">Серия офлайн-мероприятий  от Red Collar. Ждём дома!</p>
+    <p class="mobile">Серия офлайн-мероприятий  от Red Collar. Ждём дома!</p>
 </div>
 
 <main>
-
     <h1 id="anchor">Как к нам попасть </h1>
     <p>Всё просто — будь в числе первых, кто запишется на встречу после анонса даты. Количество мест объявляем
         вместе с анонсом.
         <br><br>
         Чат в телеграме, в котором общаемся, отвечаем на вопросы, публикуем анонсы мероприятий в первую очередь
-        <a href="ttttt.me/rdclr_home">ttttt.me/rdclr_home</a></p>
+        <a href="https://t.me/rdclr_home">t.me/rdclr_home</a></p>
 </main>
-<!--    <video></video>-->
-    <div class="reel">
-        <h2>Red Collar showreel</h2>
-    </div>
-<main>
+
+<div class="reel" role="button" tabindex="0" aria-label="Смотреть showreel Red Collar">
+    <h2>Red Collar showreel</h2>
+</div>
+
+<section class="content">
     <h1>О чём рассказываем</h1>
-    <section>
-        <div>
-            <img src="image/design.svg" alt="">
+    <section class="directions">
+        <div class="direction">
+            <img src="image/design.svg" alt="" aria-hidden="true">
             <h2>Дизайн</h2>
             <p>Как развить навыки и делать визуал мирового уровня</p>
         </div>
-        <div>
-            <img src="image/managment.svg" alt="">
+        <div class="direction">
+            <img src="image/managment.svg" alt="" aria-hidden="true">
             <h2>Mенеджмент</h2>
-            <p>Как руководить большими  и сложными проектами</p>
+            <p>Как руководить большими  и сложными проектами</p>
         </div>
-        <div>
-            <img src="image/frontend.svg" alt="">
+        <div class="direction">
+            <img src="image/frontend.svg" alt="" aria-hidden="true">
             <h2>Frontend</h2>
             <p>Как создавать впечатляющие анимации и интерактивы</p>
         </div>
-        <div>
-            <img src="image/backend.svg" alt="">
+        <div class="direction">
+            <img src="image/backend.svg" alt="" aria-hidden="true">
             <h2>Backend</h2>
             <p>Как стать лучшим среди бойцов невидимого фронта</p>
         </div>
     </section>
-</main>
-    <div class="no-padding-marquee-block red bg-white">
-        <div class="marquee"><span class="wrapper">следующий rdclr.home</span></div>
-    </div>
+</section>
 
-    <div class="card">
-        <div class="picture">
-            <img src="image/ivan.png" alt="Фото спикера">
-            <h2>Иван Марков</h2>
-            <p>backend-разработчик</p>
-        </div>
-        <div class="description">
-            <h1>29.10.19 / 19:00</h1>
-            <h2>Профессия backend-разработчик: начало</h2>
-            <h3>О чём будем говорить</h3>
-            <p>Лекция будет максимально полезна тем, кто только изучает веб-разработку и пока не нашёл где
-                лучше применить свои способности. Иван расскажет о том, как сейчас устроена сфера backend-разработки
-                и поделится личными опытом. В конце можно будет задать вопросы спикеру и всей команде Red Collar. </p>
-            <h3>Как попасть</h3>
-            <p>Заполни форму обратной связи ниже и мы пришлём все подробности. Успей занять свое место в рядах счастливчиков!</p>
-            <button>заполнить заявку</button>
-        </div>
+<div class="no-padding-marquee-block red bg-white" aria-hidden="true">
+    <div class="marquee"><span class="wrapper">следующий rdclr.home</span></div>
+</div>
+
+<div class="card">
+    <div class="picture">
+        <img src="image/ivan.png" alt="Фото спикера Ивана Маркова">
+        <h2>Иван Марков</h2>
+        <p>backend-разработчик</p>
     </div>
-<main>
+    <div class="description">
+        <h1>29.10.19 / 19:00</h1>
+        <h2>Профессия backend-разработчик: начало</h2>
+        <h3>О чём будем говорить</h3>
+        <p>Лекция будет максимально полезна тем, кто только изучает веб-разработку и пока не нашёл где
+            лучше применить свои способности. Иван расскажет о том, как сейчас устроена сфера backend-разработки
+            и поделится личным опытом. В конце можно будет задать вопросы спикеру и всей команде Red Collar. </p>
+        <h3>Как попасть</h3>
+        <p>Заполни форму обратной связи ниже и мы пришлём все подробности. Успей занять своё место в рядах счастливчиков!</p>
+        <button type="button">заполнить заявку</button>
+    </div>
+</div>
+
+<section class="content">
     <h1>Все спикеры</h1>
-</main>
-    <div class="long-slider">
-        <div class="long-slider-hidden">
+</section>
+
+<div class="long-slider">
+    <div class="long-slider-hidden">
         <div class="long-slider-wrapper">
             <div class="long-slide">
-                <img src="image/Nadejda.png" alt="">
+                <img src="image/Nadejda.png" alt="Надежда Кочеткова">
                 <h3>Надежда Кочеткова</h3>
                 <p>Дизайнер</p>
             </div>
             <div class="long-slide">
-                <img src="image/Andrey.png" alt="">
+                <img src="image/Andrey.png" alt="Андрей Глевчук">
                 <h3>Андрей Глевчук</h3>
                 <p>Frontend разработчик</p>
             </div>
             <div class="long-slide">
-                <img src="image/Nadejda.png" alt="">
+                <img src="image/Nadejda.png" alt="Надежда Кочеткова">
                 <h3>Надежда Кочеткова</h3>
                 <p>Дизайнер</p>
             </div>
             <div class="long-slide">
-                <img src="image/Andrey.png" alt="">
+                <img src="image/Andrey.png" alt="Андрей Глевчук">
                 <h3>Андрей Глевчук</h3>
                 <p>Frontend разработчик</p>
             </div>
             <div class="long-slide">
-                <img src="image/Nadejda.png" alt="">
+                <img src="image/Nadejda.png" alt="Надежда Кочеткова">
                 <h3>Надежда Кочеткова</h3>
                 <p>Дизайнер</p>
             </div>
             <div class="long-slide">
-                <img src="image/Andrey.png" alt="">
+                <img src="image/Andrey.png" alt="Андрей Глевчук">
                 <h3>Андрей Глевчук</h3>
                 <p>Frontend разработчик</p>
             </div>
-        </div>
-        </div>
-        <div class="long-slider-buttons">
-            <div class="button-prev"><img src="image/leftArrow.svg" alt=""></div>
-            <div class="button-next"><img src="image/rightArrow.svg" alt=""></div>
         </div>
     </div>
-    <div class="slider"></div>
+    <div class="long-slider-buttons">
+        <button class="button-prev" type="button" aria-label="Предыдущие спикеры"><img src="image/leftArrow.svg" alt="" aria-hidden="true"></button>
+        <button class="button-next" type="button" aria-label="Следующие спикеры"><img src="image/rightArrow.svg" alt="" aria-hidden="true"></button>
+    </div>
+</div>
 
-    <div class="marquee-block bg-red">
-        <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
-        <div class="marquee-left"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
-        <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
-        <div class="marquee-left"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
-        <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
-    </div>
-<main>
+<div class="marquee-block bg-red" aria-hidden="true">
+    <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
+    <div class="marquee-left"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
+    <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
+    <div class="marquee-left"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
+    <div class="marquee"><span class="wrapper">RDCLR.<span class="white">HOME&nbsp;</span></span></div>
+</div>
+
+<section class="content" id="signup">
     <h1>Записаться на&nbsp;RDCLR.HOME</h1>
-    <form>
+    <form novalidate>
         <label class="select">
             <select name="status">
-                <option>Выберите статус</option>
+                <option value="">Выберите статус</option>
                 <option>Студент</option>
                 <option>Начинающий дизайнер</option>
                 <option>Практикующий дизайнер</option>
@@ -159,126 +165,42 @@
             </select>
         </label>
 
-        <input id="elem" type="email" placeholder="E-mail" checked="false">
-        <input type="tel" placeholder="Телефон">
-        <textarea placeholder="Комментарий"></textarea>
+        <input id="email" type="email" name="email" placeholder="E-mail" autocomplete="email" aria-label="E-mail">
+        <input id="phone" type="tel" name="phone" placeholder="Телефон" autocomplete="tel" aria-label="Телефон">
+        <textarea id="comment" name="comment" placeholder="Комментарий" aria-label="Комментарий"></textarea>
         <div class="checkbox">
             <input type="checkbox" id="checkbox_1">
-            <label for="checkbox_1"><p>Даю согласие на обработку своих <a class="red">персональных данных</a></p></label>
+            <label for="checkbox_1"><p>Даю согласие на обработку своих <span class="red">персональных данных</span></p></label>
         </div>
 
-        <button>отправить</button>
+        <button type="submit">отправить</button>
     </form>
-</main>
-<a class="arrow-up" href=""><img src="image/arrow-up.svg" alt="Вверх"></a>
+</section>
+
+<a class="arrow-up" href="#" aria-label="Наверх"><img src="image/arrow-up.svg" alt="" aria-hidden="true"></a>
+
 <footer>
     <div>
-        <a href="">VK</a>
-        <a href="">FB</a>
-        <a href="">IG</a>
+        <a href="https://vk.com/redcollar">VK</a>
+        <a href="https://t.me/rdclr_home">TG</a>
+        <a href="https://redcollar.ru">RC</a>
     </div>
-    <nav>
+    <nav aria-label="Навигация в подвале">
         <a href="text.html">о нас</a>
         <a href="merch.html">мерч</a>
-        <a href="Contacts.html">контакты</a>
+        <a href="contacts.html">контакты</a>
     </nav>
 </footer>
-<div class="popup">
+
+<div class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="popup-title">
     <div class="overlay"></div>
     <div class="popup-inner">
-        <button class="popup-close"></button>
+        <button class="popup-close" type="button" aria-label="Закрыть"></button>
         <div class="message-text">
-            <h2>Поздравляем!</h2>
+            <h2 id="popup-title">Поздравляем!</h2>
             <p>Вы записались на&nbsp;RDCLR.HOME</p>
         </div>
     </div>
 </div>
 </body>
-<script>
-    // 'use strict';
-    //
-    // let button = document.querySelector('button');
-    // let menu = document.querySelector('nav');
-    // let action = false;
-    //
-    // button.addEventListener('click', function() {
-    //     if (action === false) {
-    //         menu.classList.add('active');
-    //         action = true;
-    //     }    else {
-    //         menu.classList.remove('active');
-    //         action = false;
-    //     }
-    // });
-    //
-    // let marquee = document.querySelectorAll('.marquee');
-    //
-    // const sliders = document.querySelectorAll('.slider');
-    //
-    // for (let i = 0; i < sliders.length; i++){
-    //     createSlider(sliders[i]);
-    // }
-    //
-    // function createSlider(slider) {
-    //     const slides = slider.querySelectorAll('.slide');
-    //
-    //     let len = slides.length;
-    //
-    //     if (len < 2)
-    //         return;
-    //
-    //     const prevButton = slider.querySelector('.button-prev');
-    //     const nextButton = slider.querySelector('.button-next');
-    //
-    //     if (!(prevButton && nextButton))
-    //         return;
-    //
-    //     let left = 0;
-    //     let right = 0;
-    //
-    //     let activeSlide = 0;
-    //
-    //     slides[activeSlide].classList.add('active');
-    //     // ТЕНЬ ПОВЕСИТЬ НА КОНТЕЙНЕР (???) и вообще самим элементам такие вещи присваивать не круто
-    //     if (prevButton) {
-    //         prevButton.addEventListener('click', function () {
-    //             slides[activeSlide].classList.remove('active');
-    //             let step = slides[activeSlide].scrollWidth+70;
-    //
-    //             if (activeSlide < len - 1) {
-    //                 left++;
-    //                 if (right)
-    //                     right--;
-    //
-    //                 for (let i = 0; i < len; i++) {
-    //                     slides[i].style.transform = 'translateX(' + (-step * left) + 'px)';
-    //                 }
-    //                 activeSlide++;
-    //             }
-    //
-    //             slides[activeSlide].classList.add('active');
-    //         });
-    //     }
-    //
-    //     if (nextButton)
-    //         nextButton.addEventListener('click', function () {
-    //             slides[activeSlide].classList.remove('active');
-    //             let step = slides[activeSlide].scrollWidth+70;
-    //
-    //             if (activeSlide > 0) {
-    //                 if (left)
-    //                     left--;
-    //                 right++;
-    //
-    //                 for (let i = 0; i < len; i++) {
-    //                     // ну сделать пацанскую анимацию, понятно
-    //                     slides[i].style.transform = 'translateX(' + (-step * (left + 1) + step * right) + 'px)';
-    //                 }
-    //                 activeSlide--;
-    //             }
-    //
-    //             slides[activeSlide].classList.add('active');
-    //         })
-    // }
-</script>
 </html>

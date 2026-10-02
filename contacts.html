@@ -1,40 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1">
-    <title>Контакты</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="newStyle.css">
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RDCLR.HOME — контакты</title>
+    <meta name="description" content="Контакты RDCLR.HOME: адрес офиса Red Collar в Воронеже, чат в Telegram, как добраться, запись на встречу.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 <header>
-    <a href="index.html"><img src="image/logoMain.png" alt=""></a>
-    <button></button>
-    <nav>
+    <a href="index.html"><img src="image/logoMain.png" alt="RDCLR — на главную"></a>
+    <button type="button" aria-label="Открыть меню"></button>
+    <nav aria-label="Основная навигация">
         <a href="text.html">о&nbsp;нас</a>
         <a href="merch.html">мерч</a>
-        <a href="Contacts.html">контакты</a>
+        <a href="contacts.html">контакты</a>
     </nav>
 </header>
-<a href="index.html" class="back-arrow" ><img src="image/backArrow.svg" alt="Назад"></a>
+
+<a href="index.html" class="back-arrow" aria-label="Назад на главную"><img src="image/backArrow.svg" alt="" aria-hidden="true"></a>
+
 <main>
     <h1>Контакты</h1>
 
     <h2>Мы в социальных сетях</h2>
     <div class="soc-network">
-        <a href="" type='social-network'>Vkontakte</a>
-        <a href="" type='social-network'>Facebook</a>
-        <a href="" type='social-network'>Instagram</a>
+        <a href="https://vk.com/redcollar" type="social-network">Vkontakte</a>
+        <a href="https://t.me/rdclr_home" type="social-network">Telegram</a>
+        <a href="https://redcollar.ru" type="social-network">Redcollar.ru</a>
     </div>
 
     <h3>Чат RDCLR.HOME в Telegram</h3>
-    <div class="soc-network"><a href="" type="social-network">ttttt.me/rdclr_home</a></div>
+    <div class="soc-network"><a href="https://t.me/rdclr_home" type="social-network">t.me/rdclr_home</a></div>
 
     <h2>Мы находимся</h2>
-    <iframe class="map" src="https://yandex.ru/map-widget/v1/?um=constructor%3Af081955e9b65e695eec9082a03d29409d6c1dbe8a5eda7971ce9f7c4ecc44493&amp;source=constructor"></iframe>
+    <iframe class="map" title="Карта: офис Red Collar в Воронеже" loading="lazy"
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Af081955e9b65e695eec9082a03d29409d6c1dbe8a5eda7971ce9f7c4ecc44493&amp;source=constructor"></iframe>
     <p>ул. Текстильщиков, 5б, Воронеж</p>
 
     <h3>Как к нам добраться</h3>
@@ -56,14 +62,14 @@
         смелые идеи. Хочешь к нам? Присылай рассказ о себе на почту.</p>
 
     <div class="soc-network">
-        <a href="" type="email">hello@redcollar.ru</a>
+        <a href="mailto:hello@redcollar.ru" type="email">hello@redcollar.ru</a>
     </div>
 
     <h1>Записаться на&nbsp;RDCLR.HOME</h1>
-    <form>
+    <form novalidate>
         <label class="select">
             <select name="status">
-                <option>Выберите статус</option>
+                <option value="">Выберите статус</option>
                 <option>Студент</option>
                 <option>Начинающий дизайнер</option>
                 <option>Практикующий дизайнер</option>
@@ -71,37 +77,39 @@
             </select>
         </label>
 
-        <input id="elem" type="email" placeholder="E-mail" checked>
-        <input type="tel" placeholder="Телефон">
-        <textarea placeholder="Комментарий"></textarea>
+        <input id="email" type="email" name="email" placeholder="E-mail" autocomplete="email" aria-label="E-mail">
+        <input id="phone" type="tel" name="phone" placeholder="Телефон" autocomplete="tel" aria-label="Телефон">
+        <textarea id="comment" name="comment" placeholder="Комментарий" aria-label="Комментарий"></textarea>
         <div class="checkbox">
             <input type="checkbox" id="checkbox_1">
             <label for="checkbox_1"><p>Даю согласие на обработку своих <span class="red">персональных данных</span></p></label>
         </div>
 
-        <button>отправить</button>
+        <button type="submit">отправить</button>
     </form>
-
 </main>
-<a class="arrow-up" href=""><img src="image/arrow-up.svg" alt="Вверх"></a>
+
+<a class="arrow-up" href="#" aria-label="Наверх"><img src="image/arrow-up.svg" alt="" aria-hidden="true"></a>
+
 <footer>
     <div>
-        <a href="">VK</a>
-        <a href="">FB</a>
-        <a href="">IG</a>
+        <a href="https://vk.com/redcollar">VK</a>
+        <a href="https://t.me/rdclr_home">TG</a>
+        <a href="https://redcollar.ru">RC</a>
     </div>
-    <nav>
+    <nav aria-label="Навигация в подвале">
         <a href="text.html">о нас</a>
         <a href="merch.html">мерч</a>
-        <a href="Contacts.html">контакты</a>
+        <a href="contacts.html">контакты</a>
     </nav>
 </footer>
-<div class="popup">
+
+<div class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="popup-title">
     <div class="overlay"></div>
     <div class="popup-inner">
-        <button class="popup-close"></button>
+        <button class="popup-close" type="button" aria-label="Закрыть"></button>
         <div class="message-text">
-            <h2>Поздравляем!</h2>
+            <h2 id="popup-title">Поздравляем!</h2>
             <p>Вы записались на&nbsp;RDCLR.HOME</p>
         </div>
     </div>
