@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RDCLR.HOME — контакты</title>
+    <meta name="description" content="Контакты RDCLR.HOME: адрес офиса Red Collar в Воронеже, чат в Telegram, как добраться, запись на встречу.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header>
+    <a href="index.html"><img src="image/logoMain.png" alt="RDCLR — на главную"></a>
+    <button type="button" aria-label="Открыть меню"></button>
+    <nav aria-label="Основная навигация">
+        <a href="text.html">о&nbsp;нас</a>
+        <a href="merch.html">мерч</a>
+        <a href="contacts.html">контакты</a>
+    </nav>
+</header>
+
+<a href="index.html" class="back-arrow" aria-label="Назад на главную"><img src="image/backArrow.svg" alt="" aria-hidden="true"></a>
+
+<main>
+    <h1>Контакты</h1>
+
+    <h2>Мы в социальных сетях</h2>
+    <div class="soc-network">
+        <a href="https://vk.com/redcollar" type="social-network">Vkontakte</a>
+        <a href="https://t.me/rdclr_home" type="social-network">Telegram</a>
+        <a href="https://redcollar.ru" type="social-network">Redcollar.ru</a>
+    </div>
+
+    <h3>Чат RDCLR.HOME в Telegram</h3>
+    <div class="soc-network"><a href="https://t.me/rdclr_home" type="social-network">t.me/rdclr_home</a></div>
+
+    <h2>Мы находимся</h2>
+    <iframe class="map" title="Карта: офис Red Collar в Воронеже" loading="lazy"
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Af081955e9b65e695eec9082a03d29409d6c1dbe8a5eda7971ce9f7c4ecc44493&amp;source=constructor"></iframe>
+    <p>ул. Текстильщиков, 5б, Воронеж</p>
+
+    <h3>Как к нам добраться</h3>
+    <p>Наш офис расположен в бизнес-парке «Текстильщики». От остановки «Политехнический институт»
+        до бизнес-парка ходит бесплатное маршрутное такси.</p>
+
+    <h3>Время отправления автобуса</h3>
+    <div class="time">
+        <img src="image/18-10.svg" alt="18:10">
+        <img src="image/18-20.svg" alt="18:20">
+        <img src="image/18-30.svg" alt="18:30">
+        <img src="image/18-45.svg" alt="18:45">
+        <img src="image/19-00.svg" alt="19:00">
+        <img src="image/19-10.svg" alt="19:10">
+    </div>
+
+    <h2>Стать частью команды</h2>
+    <p>Нам всегда нужны талантливые люди, которые горят своим делом и готовы воплощать самые
+        смелые идеи. Хочешь к нам? Присылай рассказ о себе на почту.</p>
+
+    <div class="soc-network">
+        <a href="mailto:hello@redcollar.ru" type="email">hello@redcollar.ru</a>
+    </div>
+
+    <h1>Записаться на&nbsp;RDCLR.HOME</h1>
+    <form novalidate>
+        <label class="select">
+            <select name="status">
+                <option value="">Выберите статус</option>
+                <option>Студент</option>
+                <option>Начинающий дизайнер</option>
+                <option>Практикующий дизайнер</option>
+                <option>Хочу освоить другую профессию</option>
+            </select>
+        </label>
+
+        <input id="email" type="email" name="email" placeholder="E-mail" autocomplete="email" aria-label="E-mail">
+        <input id="phone" type="tel" name="phone" placeholder="Телефон" autocomplete="tel" aria-label="Телефон">
+        <textarea id="comment" name="comment" placeholder="Комментарий" aria-label="Комментарий"></textarea>
+        <div class="checkbox">
+            <input type="checkbox" id="checkbox_1">
+            <label for="checkbox_1"><p>Даю согласие на обработку своих <span class="red">персональных данных</span></p></label>
+        </div>
+
+        <button type="submit">отправить</button>
+    </form>
+</main>
+
+<a class="arrow-up" href="#" aria-label="Наверх"><img src="image/arrow-up.svg" alt="" aria-hidden="true"></a>
+
+<footer>
+    <div>
+        <a href="https://vk.com/redcollar">VK</a>
+        <a href="https://t.me/rdclr_home">TG</a>
+        <a href="https://redcollar.ru">RC</a>
+    </div>
+    <nav aria-label="Навигация в подвале">
+        <a href="text.html">о нас</a>
+        <a href="merch.html">мерч</a>
+        <a href="contacts.html">контакты</a>
+    </nav>
+</footer>
+
+<div class="popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="popup-title">
+    <div class="overlay"></div>
+    <div class="popup-inner">
+        <button class="popup-close" type="button" aria-label="Закрыть"></button>
+        <div class="message-text">
+            <h2 id="popup-title">Поздравляем!</h2>
+            <p>Вы записались на&nbsp;RDCLR.HOME</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
