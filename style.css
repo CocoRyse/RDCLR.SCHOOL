@@ -1,3 +1,26 @@
+/* ============================================================
+   Дизайн-токены
+   ============================================================ */
+
+:root {
+    --color-brand: #EC3332;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-gray: #E6E6E6;
+    --color-placeholder: #A8A8A8;
+
+    --font-main: Montserrat, sans-serif;
+    --line-height: 130%;
+
+    --shadow-block: 10px 10px var(--color-brand);
+    --border-block: 2px solid var(--color-black);
+    --transition: 0.2s ease;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -16,10 +39,35 @@ time, mark, audio, video, section{
     border:none;
 }
 
+button {
+    background: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: var(--line-height);
+    color: var(--color-black);
+}
+
+::selection {
+    background: var(--color-brand);
+    color: var(--color-white);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
+}
+
 .no-animation {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -o-transition: none !important;
     transition: none !important;
 }
 
@@ -27,14 +75,10 @@ nav a:hover {
     text-decoration: underline;
 }
 
-main a:hover {
-    color: #EC3332;
+main a:hover, .content a:hover {
+    color: var(--color-brand);
 
-    transition: 0.2s ease;
-}
-
-.button-next:hover, .button-prev:hover, .checkbox label:hover::before,  .checkbox label:hover::after, button, .reel h2::after{
-    cursor: pointer;
+    transition: var(--transition);
 }
 
 .active {
@@ -77,7 +121,7 @@ main a:hover {
 }
 
 .bg-red {
-    background-color: #EC3332;
+    background-color: var(--color-brand);
 }
 
 .bg-white {
@@ -89,7 +133,7 @@ main a:hover {
 }
 
 .red {
-    color: #EC3332;
+    color: var(--color-brand);
 }
 
 .white {
@@ -110,7 +154,7 @@ a {
 
 .top {
     position: relative;
-    background-color: #EC3332;
+    background-color: var(--color-brand);
     top: 0;
     left: 0;
     width: 100%;
@@ -123,10 +167,9 @@ a {
 .top p {
     position: absolute;
 
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     color: #FFFFFF;
 }
@@ -155,11 +198,11 @@ a {
     position: absolute;
 }
 
-main section {
+main section, .content section {
     display: grid;
 }
 
-main section div img {
+main section div img, .content section div img {
     float: left;
 }
 
@@ -168,8 +211,30 @@ main section div img {
     border-bottom: 1px solid #000000;
 }
 
+/* Бегущие строки: анимации общие для всех разрешений */
+
+@keyframes marquee {
+    0% { transform: translate(-100%, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes marquee-left {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.marquee .wrapper {
+    display: inline-block;
+    animation: marquee 10s infinite linear;
+}
+
+.marquee-left .wrapper {
+    display: inline-block;
+    animation: marquee-left 10s infinite linear;
+}
+
 .card {
-    background-color: #E6E6E6;
+    background-color: var(--color-gray);
     display: flex;
 }
 
@@ -188,11 +253,10 @@ main section div img {
 }
 
 .description button {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
 
-    line-height: 130%;
+    line-height: var(--line-height);
 
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -214,8 +278,7 @@ header.hide {
 }
 
 header, footer {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
 
     line-height: 120%;
@@ -239,17 +302,16 @@ a {
 }
 
 footer div {
-    color: #EC3332;
+    color: var(--color-brand);
 }
 
 h1, h2, h3 {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
 
-    color: #EC3332;
+    color: var(--color-brand);
 }
 
 h1 {
@@ -257,10 +319,9 @@ h1 {
 }
 
 p {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     color: #000000;
 }
@@ -270,7 +331,7 @@ p {
 }
 
 .time div {
-    border: 2px solid #EC3332;
+    border: 2px solid var(--color-brand);
     display: flex;
     align-items: center;
     text-align: center;
@@ -281,10 +342,9 @@ p {
 }
 
 a[type='social-network'] {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -296,10 +356,9 @@ a[type='social-network']::before {
 }
 
 a[type='email'] {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
     text-transform: uppercase;
 }
@@ -309,24 +368,22 @@ form {
     position: relative;
 }
 
-main select {
+main select, .content select {
     width: 100%;
     height: 100%;
     display: block;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
     color: #000000;
     background: #FFFFFF;
 }
 
 input {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
     color: #000000;
 }
@@ -336,12 +393,11 @@ input {
 }
 
 input::-webkit-input-placeholder {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
-    color: #A8A8A8;
+    color: var(--color-placeholder);
 }
 
 .checkbox input[type="checkbox"] {
@@ -374,24 +430,22 @@ input::-webkit-input-placeholder {
 }
 
 form button {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border: none;
 
-    background: #EC3332;
+    background: var(--color-brand);
     color: #FFFFFF;
 }
 
 textarea {
     border: 2px solid #000000;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
     color: #000000;
     resize: none;
@@ -401,7 +455,7 @@ footer nav {
 }
 
 blockquote {
-    font-family: Montserrat, sans-serif;
+    font-family: var(--font-main);
     font-style: italic;
     font-weight: normal;
     line-height: 100%;
@@ -419,10 +473,9 @@ blockquote::before {
 }
 
 ol {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     list-style: none;
     counter-reset: count;
 }
@@ -433,20 +486,18 @@ ol li {
 }
 
 ol li::before {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
     content: counter(count);
-    color: #EC3332;
+    color: var(--color-brand);
     display: inline-block;
 }
 
 ol li::after {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
     content: counter(count);
     display: inline-block;
     color: transparent;
@@ -461,7 +512,7 @@ ol li::after {
 
 .slider-hidden {
     width: 100%;
-    box-shadow: 10px 10px #EC3332;
+    box-shadow: 10px 10px var(--color-brand);
     overflow: hidden;
 }
 
@@ -487,10 +538,9 @@ ol li::after {
 }
 
 .slider-counter {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     letter-spacing: 0.02em;
 
@@ -499,28 +549,25 @@ ol li::after {
 }
 
 ul {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     list-style-image: url("image/Ellipse2.svg");
 }
 
 .marquee-block {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     letter-spacing: 0.02em;
     text-transform: uppercase;
 }
 
 .no-padding-marquee-block {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
-    line-height: 130%;
+    line-height: var(--line-height);
 
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -536,7 +583,7 @@ ul {
 }
 
 .select.error, textarea.error, input.error{
-    border: 2px solid #EC3332;
+    border: 2px solid var(--color-brand);
 }
 
 .goods p {
@@ -605,8 +652,7 @@ ul {
 }
 
 .goods section {
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: bold;
     font-size: 20px;
     line-height: 120%;
@@ -640,10 +686,9 @@ ul {
     width: 100%;
     height: 100%;
     display: block;
-    font-family: Montserrat, sans-serif;
-    font-style: normal;
+    font-family: var(--font-main);
     font-weight: normal;
-    line-height: 130%;
+    line-height: var(--line-height);
     letter-spacing: 0.02em;
     color: #000000;
     background: #FFFFFF;
@@ -672,7 +717,7 @@ body.active {
         background: #000000;
         width: 466px;
         height: 333px;
-        box-shadow: 10px 10px #EC3332;
+        box-shadow: 10px 10px var(--color-brand);
     }
 
     .long-slide h3 {
@@ -701,7 +746,7 @@ body.active {
     .goods section div {
         width: 466px;
         height: 333px;
-        box-shadow: 10px 10px #EC3332;
+        box-shadow: 10px 10px var(--color-brand);
     }
 
     .goods img {
@@ -728,6 +773,8 @@ body.active {
 
     .goods section p {
         margin-top: 30px;
+        font-weight: bold;
+        margin-left: 115px;
     }
 
     .goods section p + p{
@@ -762,8 +809,6 @@ body.active {
         text-align: center;
     }
 
-    .slider-wrapper {
-    }
 
     .slide img{
         width: 100%;
@@ -851,7 +896,7 @@ body.active {
         width: 88vw;
         height: 45vw;
 
-        box-shadow: 10px 10px #EC3332;
+        box-shadow: 10px 10px var(--color-brand);
 
         margin: 220px 0 170px 5.5%;
     }
@@ -867,11 +912,11 @@ body.active {
         margin-top: -27px;
     }
 
-    .reel + main, .card + main {
+    .reel + main, .reel + .content, .card + main, .card + .content {
         margin-top: 0;
     }
 
-    main section{
+    main section, .content section{
         grid-template-rows: repeat(auto-fill, minmax(107px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
         grid-column-gap: 80px;
@@ -879,16 +924,16 @@ body.active {
         margin: 100px -20% 222px 0;
     }
 
-    section div {
+    .directions div {
         width: 424px;
     }
 
-    section p {
+    .directions p {
         font-weight: bold;
         margin-left: 115px;
     }
 
-    section div img{
+    .directions div img{
         padding-top: 16px;
         margin-right: 36px;
     }
@@ -927,44 +972,9 @@ body.active {
         overflow:hidden;
     }
 
-    .marquee-left .wrapper {
-        display:inline-block;
-        -webkit-animation: marquee-left 10s infinite linear;
-        animation: marquee-left 10s infinite linear;
-    }
-
-    @-webkit-keyframes marquee-left {
-        0%{-webkit-transform: translate(0, 0);}
-        100%{-webkit-transform: translate(-100%, 0);}
-    }
-
-    @keyframes marquee-left{
-        0%{transform: translate(0, 0);}
-        100%{transform: translate(-100%, 0)}
-    }
-
     .marquee{
         white-space: nowrap;
         margin-top: 12px;
-        /*overflow: hidden;*/
-    }
-
-    .marquee .wrapper {
-        display:inline-block;
-        -webkit-animation: marquee 10s infinite linear;
-        animation: marquee 10s infinite linear;
-
-        /*border-top: 2px solid #000000;*/
-        /*border-bottom: 2px solid #000000;*/
-    }
-
-    @-webkit-keyframes marquee {
-        0%{-webkit-transform: translate(-100%, 0);}
-        100%{-webkit-transform: translate(0, 0);}
-    }
-    @keyframes marquee{
-        0%{transform: translate(-100%, 0);}
-        100%{transform: translate(0, 0)}
     }
 
     .card {
@@ -1023,7 +1033,7 @@ body.active {
 
         font-size: 20px;
 
-        background: #EC3332;
+        background: var(--color-brand);
         border: none;
         box-shadow: 10px 10px #000000;
 
@@ -1047,7 +1057,7 @@ body.active {
         width: 30%;
     }
 
-    main {
+    main, .content {
         margin-left: 25%;
         margin-top: 235px;
         width: 55%;
@@ -1082,7 +1092,7 @@ body.active {
     }
 
     p a {
-        color: #EC3332;
+        color: var(--color-brand);
     }
 
     blockquote {
@@ -1121,7 +1131,7 @@ body.active {
     ol li::after {
         top: 2px;
         left: 2px;
-        -webkit-text-stroke: 2px #EC3332;
+        -webkit-text-stroke: 2px var(--color-brand);
         z-index: -1;
         font-size: 36px;
         width: 50px;
@@ -1132,16 +1142,6 @@ body.active {
         grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
         grid-gap: 30px;
-    }
-
-    .time div {
-        width: 90px;
-        height: 60px;
-        box-shadow: 4px 4px #EC3332;
-    }
-
-    .time div p {
-        padding: 20px;
     }
 
     h1 + h2 {
@@ -1204,7 +1204,7 @@ body.active {
     }
 
     .how-to-find img{
-        box-shadow: 10px 10px #EC3332;
+        box-shadow: 10px 10px var(--color-brand);
         width: 100%;
         height: 300px;
     }
@@ -1220,7 +1220,7 @@ body.active {
 
     .map {
         display: block;
-        box-shadow: 10px 10px #EC3332;
+        box-shadow: 10px 10px var(--color-brand);
         width: 100%;
         height: 30vw;
     }
@@ -1292,7 +1292,7 @@ body.active {
         grid-row-gap: 40px;
     }
 
-    main select {
+    main select, .content select {
         font-size: 20px;
         padding: 15px;
     }
@@ -1342,7 +1342,7 @@ body.active {
     }
 
     .checkbox.error label::before {
-        border: 2px solid #EC3332;
+        border: 2px solid var(--color-brand);
     }
 
     .checkbox p {
@@ -1381,9 +1381,38 @@ body.active {
     }
 
 }
-/*sssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssssssssssssssssssssss*/
-/*ssssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddsssssssss*/
-/*ssssssssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssssssssssssssssssssaddssssssssss*/
+/* Планшеты: подвал перестраивается в колонку раньше мобильного лейаута */
+@media screen and (max-width: 1000px){
+
+    footer {
+        height: 200px;
+        flex-direction: column;
+    }
+
+    footer nav {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 25%;
+        text-align: center;
+        margin: auto auto;
+    }
+
+    footer nav a{
+        margin-bottom: 10px;
+    }
+
+    footer div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 24px;
+        width: 50%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 @media screen and (max-width: 800px) {
     body {
         min-width: 310px;
@@ -1411,7 +1440,7 @@ body.active {
     .long-slide img {
         background: #000000;
         width: 250px;
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
     }
 
     .long-slide h3 {
@@ -1451,7 +1480,7 @@ body.active {
     .goods section div {
         width: 100%;
         height: 195px;
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
     }
 
     .goods img {
@@ -1486,11 +1515,10 @@ body.active {
     }
 
     .selectors {
-        font-family: Montserrat, sans-serif;
-        font-style: normal;
+        font-family: var(--font-main);
         font-weight: normal;
         font-size: 14px;
-        line-height: 130%;
+        line-height: var(--line-height);
         width: 90%;
         grid-template-rows: repeat(auto-fill, minmax(56px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -1583,7 +1611,7 @@ body.active {
         width: 90%;
         height: 35vw;
 
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
 
         margin: 100px 0 85px 20px;
     }
@@ -1599,7 +1627,7 @@ body.active {
         margin-left: 10px;
     }
 
-    main section{
+    main section, .content section{
         grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
         grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
         grid-column-gap: 30px;
@@ -1653,47 +1681,11 @@ body.active {
     .marquee-left{
         margin-top: 12px;
         white-space:nowrap;
-        /*overflow:hidden;*/
-    }
-
-    .marquee-left .wrapper {
-        display:inline-block;
-        -webkit-animation: marquee-left 10s infinite linear;
-        animation: marquee-left 10s infinite linear;
-    }
-
-    @-webkit-keyframes marquee-left {
-        0%{-webkit-transform: translate(0, 0);}
-        100%{-webkit-transform: translate(-100%, 0);}
-    }
-
-    @keyframes marquee-left{
-        0%{transform: translate(0, 0);}
-        100%{transform: translate(-100%, 0)}
     }
 
     .marquee{
         white-space: nowrap;
         margin-top: 12px;
-        /*overflow: hidden;*/
-    }
-
-    .marquee .wrapper {
-        display:inline-block;
-        -webkit-animation: marquee 10s infinite linear;
-        animation: marquee 10s infinite linear;
-
-        /*border-top: 2px solid #000000;*/
-        /*border-bottom: 2px solid #000000;*/
-    }
-
-    @-webkit-keyframes marquee {
-        0%{-webkit-transform: translate(-100%, 0);}
-        100%{-webkit-transform: translate(0, 0);}
-    }
-    @keyframes marquee{
-        0%{transform: translate(-100%, 0);}
-        100%{transform: translate(0, 0)}
     }
 
     .picture img {
@@ -1755,7 +1747,7 @@ body.active {
 
         font-size: 14px;
 
-        background: #EC3332;
+        background: var(--color-brand);
         border: none;
         box-shadow: 5px 5px #000000;
 
@@ -1771,7 +1763,7 @@ body.active {
 
     .slider-wrapper {
         width: 100%;
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
     }
 
     .slide img{
@@ -1828,7 +1820,7 @@ body.active {
         left: 0;
         width: 100%;
         height: 100vh;
-        background: #EC3332;
+        background: var(--color-brand);
         z-index: 0;
     }
 
@@ -1848,7 +1840,7 @@ body.active {
         background-repeat: round;
     }
 
-    main {
+    main, .content {
         margin-left: 20px;
         margin-top: 152px;
         width: 90%;
@@ -1883,7 +1875,7 @@ body.active {
     }
 
     p a {
-        color: #EC3332;
+        color: var(--color-brand);
     }
 
     blockquote {
@@ -1923,7 +1915,7 @@ body.active {
     ol li::after {
         top: 2px;
         left: 2px;
-        -webkit-text-stroke: 2px #EC3332;
+        -webkit-text-stroke: 2px var(--color-brand);
         z-index: -1;
         font-size: 23px;
         width: 40px;
@@ -1933,16 +1925,6 @@ body.active {
         grid-template-rows: repeat(auto-fit, minmax(40px, 1px));
         grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
         grid-gap: 12px;
-    }
-
-    .time div {
-        width: 60px;
-        height: 40px;
-        box-shadow: 2px 2px #EC3332;
-    }
-
-    .time div p {
-        padding: 12px;
     }
 
     h1 + h2 {
@@ -1997,7 +1979,7 @@ body.active {
     }
 
     .how-to-find img {
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
         width: 100%;
         height: 50%;
     }
@@ -2012,7 +1994,7 @@ body.active {
     }
 
     .map {
-        box-shadow: 5px 5px #EC3332;
+        box-shadow: 5px 5px var(--color-brand);
         width: 100%;
         height: 25vw;
     }
@@ -2084,7 +2066,7 @@ body.active {
         grid-row-gap: 20px;
     }
 
-    main select {
+    main select, .content select {
         font-size: 14px;
         padding-left: 8px;
     }
@@ -2114,10 +2096,6 @@ body.active {
         margin-left: 5px;
     }
 
-    .checkbox label {
-        /*padding-left: 40px;*/
-    }
-
     .checkbox p {
         margin-left: 40px;
     }
@@ -2140,7 +2118,7 @@ body.active {
     }
 
     .checkbox.error label::before {
-        border: 2px solid #EC3332;
+        border: 2px solid var(--color-brand);
     }
 
     textarea {
@@ -2160,41 +2138,70 @@ body.active {
 
 }
 
-@media screen and (max-width: 1000px){
-
-    footer {
-        height: 200px;
-        flex-direction: column;
-    }
-
-    footer nav {
-        flex-direction: column;
-        justify-content: space-between;
-        width: 25%;
-        text-align: center;
-        margin: auto auto;
-    }
-
-    footer nav a{
-        margin-bottom: 10px;
-    }
-
-    footer div{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 24px;
-        width: 50%;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 @media screen and (max-width: 343px){
     .reel h2:after {
         content: url("image/play-mobile.svg");
         margin-top: -25px;
         margin-left: 10px;
+    }
+}
+
+/* ============================================================
+   Полиш: интерактив и доступность
+   ============================================================ */
+
+.reel,
+.checkbox label {
+    cursor: pointer;
+}
+
+/* Стрелки слайдеров слегка отъезжают в свою сторону */
+.button-prev,
+.button-next {
+    transition: transform var(--transition);
+}
+
+.button-prev:hover {
+    transform: translateX(-4px);
+}
+
+.button-next:hover {
+    transform: translateX(4px);
+}
+
+/* Направления: красная тень повторяет силуэт иконки (drop-shadow
+   по альфа-каналу SVG) и тянется за курсором — см. initDirections
+   в script.js, смещения приходят в CSS-переменных */
+.directions .direction img {
+    filter: drop-shadow(var(--sx, 6px) var(--sy, 6px) 0 var(--color-brand));
+    transform: translate(var(--ix, 0px), var(--iy, 0px));
+    will-change: filter, transform;
+}
+
+.directions .direction p {
+    transition: color var(--transition);
+}
+
+.directions .direction:hover p {
+    color: var(--color-brand);
+}
+
+/* Пользователям с отключённой анимацией — статичную картинку */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .marquee .wrapper,
+    .marquee-left .wrapper {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
