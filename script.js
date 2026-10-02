@@ -1,478 +1,415 @@
 'use strict';
 
-window.addEventListener('DOMContentLoaded', function () {
-    let button = document.querySelector('button');
-    let menu = document.querySelector('nav');
-    let action = false;
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    button.addEventListener('click', function () {
-        if (action === false) {
-            if (menu) menu.classList.add('active');
-            if (button) button.classList.add('active');
-            document.documentElement.classList.add('active');
-            action = true;
-        } else {
-            if (menu) menu.classList.remove('active');
-            if (button) button.classList.remove('active');
-            document.documentElement.classList.remove('active');
-            action = false;
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    initBurger();
+    initHeaderHide();
+    initSlider();
+    initLongSlider();
+    initMarquee();
+    initHeroParallax();
+    initDirections();
+    initForm();
+    initReel();
+    initCardScroll();
 });
 
-window.addEventListener('DOMContentLoaded', function () {
-    let header = document.querySelector('header');
-    let prevScroll = pageYOffset;
-    let scroll = pageYOffset;
+/* Бургер в шапке: открывает полноэкранное меню на мобильных */
+function initBurger() {
+    const button = document.querySelector('header button');
+    const menu = document.querySelector('header nav');
+    if (!button || !menu) return;
+
+    button.addEventListener('click', () => {
+        const opened = menu.classList.toggle('active');
+        button.classList.toggle('active', opened);
+        document.documentElement.classList.toggle('active', opened);
+        button.setAttribute('aria-label', opened ? 'Закрыть меню' : 'Открыть меню');
+    });
+}
+
+/* Прячем шапку при скролле вниз, возвращаем при скролле вверх */
+function initHeaderHide() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let prevScroll = window.scrollY;
     let hidden = false;
+    let scrolledUp = 0;
 
-    let scrolledDown = 0;
-
-    window.addEventListener('scroll', function () {
-        if (!header)
-            return;
-
+    window.addEventListener('scroll', () => {
+        const scroll = window.scrollY;
         if (window.innerWidth < 800) return;
 
-        scroll = pageYOffset;
-
-        if ((header) && !hidden)
-            header.classList.remove('hide');
-
-        if ((scroll - prevScroll > 0) && !hidden) {
+        if (scroll > prevScroll && !hidden) {
             header.classList.add('hide');
             hidden = true;
-            prevScroll = scroll;
-            scrolledDown = 0;
+            scrolledUp = 0;
         } else {
-            if (hidden && (scroll - prevScroll < 0))
-                scrolledDown += scroll - prevScroll;
+            if (hidden && scroll < prevScroll)
+                scrolledUp += prevScroll - scroll;
             else
-                scrolledDown = 0;
+                scrolledUp = 0;
 
-            if ((scrolledDown < -50) && hidden) {
+            if (hidden && (scrolledUp > 50 || scroll === 0)) {
                 header.classList.remove('hide');
                 hidden = false;
-                prevScroll = scroll
             }
         }
-        if (hidden && pageYOffset === 0) {
-            header.classList.remove('hide');
-            hidden = false;
-            prevScroll = scroll
-        }
 
-        prevScroll = scroll
-    });
-});
+        prevScroll = scroll;
+    }, { passive: true });
+}
 
-window.addEventListener('DOMContentLoaded', function () {
+/* Слайдер фотоотчёта на странице «О нас» */
+function initSlider() {
     const sliders = document.querySelectorAll('.slider');
+    if (!sliders.length) return;
 
-    for (let i = 0; i < sliders.length; i++) {
-        createSlider(sliders[i]);
-    }
-
-    function createSlider(slider) {
+    sliders.forEach((slider) => {
         const slides = slider.querySelectorAll('.slide');
-
-        if (slides.length < 2) return;
-
-        let wrapper = slider.querySelector('.slider-wrapper');
+        const wrapper = slider.querySelector('.slider-wrapper');
         const prevButton = slider.querySelector('.button-prev');
         const nextButton = slider.querySelector('.button-next');
-        const sliderCounter = slider.querySelector('.slider-counter');
+        const counter = slider.querySelector('.slider-counter');
 
-        if (!prevButton && !nextButton) return;
+        if (slides.length < 2 || !wrapper || !prevButton || !nextButton) return;
 
-        let width = 0;
-
-        function resize() {
-            // width = slider.scrollWidth;
-            width = slides[0].scrollWidth;
-        }
-
-        resize();
-
+        let width = slides[0].scrollWidth;
         let activeSlide = 0;
 
-        slides[activeSlide].classList.add('active');
+        const render = () => {
+            if (counter)
+                counter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
+            wrapper.style.transform = `translate3d(-${width * activeSlide}px, 0, 0)`;
+        };
 
-        // let wrapperHtml = wrapper.innerHTML;
-
-        if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
-
-        if (prevButton) prevButton.addEventListener('click', function () {
-
+        prevButton.addEventListener('click', () => {
             activeSlide--;
-
-            if (activeSlide < 1) activeSlide = slides.length - 1;
-
-            if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
-
-            wrapper.style.transform = `translate3d(-${width * activeSlide}px, 0, 0)`;
+            if (activeSlide < 0) activeSlide = slides.length - 1;
+            render();
         });
 
-        if (nextButton) nextButton.addEventListener('click', function () {
-
+        nextButton.addEventListener('click', () => {
             activeSlide++;
-
             if (activeSlide > slides.length - 1) activeSlide = 0;
-
-            if (sliderCounter) sliderCounter.innerHTML = `<p><span class="red">${activeSlide + 1}</span>&nbsp;/&nbsp;${slides.length}</p>`;
-
-            wrapper.style.transform = `translate3d(-${width * activeSlide}px, 0, 0)`;
+            render();
         });
 
-        window.addEventListener('resize', resize);
-    }
-});
-
-window.addEventListener('DOMContentLoaded', function () {
-    let marqueeBlocks = document.querySelectorAll('.marquee-block');
-    for (let i = 0; i < marqueeBlocks.length; i++) {
-        createMarqueeBlock(marqueeBlocks[i]);
-    }
-    let noPaddingMarqueeBlocks = document.querySelectorAll('.no-padding-marquee-block');
-    for (let i = 0; i < marqueeBlocks.length; i++) {
-        createMarqueeBlock(noPaddingMarqueeBlocks[i]);
-    }
-
-    function createMarqueeBlock(block) {
-        if (!block) return;
-
-        let divs = block.querySelectorAll('div');
-
-        let width = 0;
-
-        let count = 1;
-
-        function resize() {
-            width = window.innerWidth;
-
-            // if (block)
-                // block.style.width = `${width}px`;
-        }
-
-        resize();
-
-
-        for (let i = 0; i < divs.length; i++) {
-            createMarqueeDiv(divs[i]);
-        }
-
-        function createMarqueeDiv(div) {
-            if (!div) return;
-
-            document.addEventListener('resize', resize);
-
-            const innerHTML = div.innerHTML;
-
-            function recount() {
-                let wrapperWidth = 100;
-
-                const wrapper = div.querySelector('.wrapper');
-                if (wrapper)
-                    wrapperWidth = wrapper.clientWidth;
-
-                count = width / wrapperWidth + 1;
-
-                div.innerHTML = innerHTML;
-
-                let extender = '';
-                for (let i = 0; i < count; i++)
-                    extender += div.innerHTML;
-
-                div.innerHTML = extender;
-            }
-
-            recount();
-
-
-            window.addEventListener('resize', recount);
-        }
-
-        window.addEventListener('resize', resize);
-    }
-});
-
-window.addEventListener('DOMContentLoaded', function () {
-    let tops = document.querySelectorAll('.top');
-    for (let i = 0; i < tops.length; i++) {
-        createTop(tops[i]);
-    }
-
-    function createTop(top) {
-        if (!top) return;
-
-        let shadowRdclr = document.querySelector('.RDCLR-shadow');
-        let shadowHome = document.querySelector('.HOME-shadow');
-
-        let left = 0;
-        let ttop = 0;
-
-        let nLeft = 0;
-        let nTop = 0;
-
-        function animate() {
-            left += (nLeft - left) / 20;
-            ttop += (nTop - ttop) / 20;
-
-            if (shadowHome) {
-                shadowHome.style.transform = 'translateY(' + ttop + 'px)' +
-                    ' translateX(' + left + 'px)';
-            }
-
-            if (shadowRdclr) {
-                shadowRdclr.style.transform = 'translateY(' + ttop + 'px)' +
-                    ' translateX(' + left + 'px)';
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        top.addEventListener('mousemove', function (event) {
-            let centerX = window.innerWidth / 2;
-            let centerY = top.clientHeight / 2;
-
-            let kh;
-            let kv;
-
-            if (window.innerWidth >= 1440) {
-                kh = -17;
-                kv = -11;
-            } else {
-                kh = -11;
-                kv = -6;
-            }
-
-            nLeft = kh * Math.tanh((event.clientX - centerX) / 500);
-            nTop = kv * Math.tanh((event.clientY - centerY) / 50);
+        window.addEventListener('resize', () => {
+            width = slides[0].scrollWidth;
+            render();
         });
 
-        animate();
-    }
-});
+        render();
+    });
+}
 
-window.addEventListener('DOMContentLoaded', function () {
-    function createValidate() {
-        const forms = document.querySelectorAll('form');
-        const messageField = document.querySelector('.message-text');
-        const overlay = document.querySelector('.overlay');
-        const button = document.querySelector('.popup-close');
+/* Слайдер спикеров на главной: бесконечная лента из трёх копий ряда.
+   На десктопе едет по горизонтали, на мобильных — по вертикали */
+function initLongSlider() {
+    const sliders = document.querySelectorAll('.long-slider');
+    if (!sliders.length) return;
 
-        if (!messageField || !overlay) return;
+    sliders.forEach((slider) => {
+        const wrapper = slider.querySelector('.long-slider-wrapper');
+        const prevButton = slider.querySelector('.button-prev');
+        const nextButton = slider.querySelector('.button-next');
+        const slides = slider.querySelectorAll('.long-slide');
 
-        overlay.addEventListener('click', function () {
-            document.documentElement.classList.remove('popup-active');
-            // по хорошему нельзя вешать классы на html, так как это может спровоцировать перерисовку всей страницы
-        });
+        if (!wrapper || !prevButton || !nextButton || slides.length < 2) return;
 
-        if (button)
-            button.addEventListener('click', function () {
-                document.documentElement.classList.remove('popup-active');
-            });
-
-        Array.from(forms).forEach(form => createForm(form, messageField));
-    }
-
-    createValidate();
-
-    function createForm(form, mess) {
-        const action = form.action;
-        const elements = form.elements;
-
-        if (!action || !elements) return;
-
-        function validate() {
-            let result = true;
-
-            if (form.status.selectedIndex === 0) {
-                let el = form.querySelector('.select');
-                el.classList.add('error');
-                el.addEventListener('change', function () {
-                    el.classList.remove('error');
-                });
-                result = false;
-            }
-
-            for (let i = 0; i < elements.length; i++) {
-                let el = elements[i];
-
-                // if (el.dataset.required) continue;
-
-                if (el.type === 'email' ||
-                    el.type === 'tel' ||
-                    el.type === 'text') {
-                    // textarea не валидирую, потому что логично, что это не обязательное поле и его можно оставить пустым
-                    if (!el.value) {
-                        el.classList.add('error');
-                        el.addEventListener('change', function () {
-                            el.classList.remove('error');
-                        });
-                        result = false;
-                    }
-                    console.log(el.value);
-                }
-                if (el.type === 'checkbox')
-                    if (!el.checked) {
-                        let checkbox = form.querySelector('.checkbox');
-                        checkbox.classList.add('error');
-                        el.addEventListener('change', function () {
-                            checkbox.classList.remove('error');
-                        });
-                        result = false;
-                    }
-            }
-            // дата атрибуты очень удобная шутка, которые доступные в объекте датасет
-            return result;
-        }
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // отменяет стандартное поведение элемента
-            const success = `
-            <h2 class="black">Поздравляем!</h2>
-            <p>Вы записались на&nbsp;RDCLR.HOME</p>`;
-
-            const lose = `
-            <h2>Ошибка!</h2>
-            <p class="red">Проверьте корректность вводимых данных</p>`;
-
-            if (!validate()) {
-                // document.documentElement.classList.add('popup-active');
-                // mess.innerHTML = lose;
-                return;
-            }
-
-            document.documentElement.classList.add('popup-active');
-            mess.innerHTML = success;
-        })
-    }
-});
-
-window.addEventListener('DOMContentLoaded', function () {
-    function createReel(reel) {
-        if (!reel) return;
-
-        let clicked = false;
-
-        reel.addEventListener('click', function () {
-            if (clicked) return;
-
-            reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}" src="https://www.youtube.com/embed/d-DXr4cPLI4" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            clicked = true;
-        });
-
-
-        function resize() {
-            let iframe = reel.querySelector('iframe');
-
-            if (!iframe) return;
-
-            iframe.width = reel.clientWidth;
-            iframe.height = reel.clientHeight;
-        }
-
-        window.addEventListener('resize', resize);
-    }
-
-    let reels = document.querySelectorAll('.reel');
-    for (let i = 0; i < reels.length; i++)
-        createReel(reels[i]);
-
-    function createCard(card) {
-        if (!card) return;
-
-        let button = card.querySelector('button');
-
-        if (!button) return;
-
-        button.addEventListener('click', function () {
-            window.scrollTo(0, window.innerWidth < 800 ? 6700 : 5800);
-        })
-    }
-
-    let cards = document.querySelectorAll('.card');
-    for (let i = 0; i < cards.length; i++)
-        createCard(cards[i]);
-});
-
-// сочный слайдер с главной
-window.addEventListener('DOMContentLoaded', function () {
-    let sliders = document.querySelectorAll('.long-slider');
-    for (let i = 0; i < sliders.length; i++)
-        createSlider(sliders[i]);
-
-    function createSlider(slider) {
-        if (!slider) return;
-
-        let nextButton = slider.querySelector('.button-next');
-        let prevButton = slider.querySelector('.button-prev');
-        let wrapper = slider.querySelector('.long-slider-wrapper');
-        let slides = slider.querySelectorAll('.long-slide');
-
-        if (!nextButton && !prevButton || !slides) return;
-
-        const wrapperHTML = wrapper.innerHTML;
-
-        let width = 0;
-        let height = 0;
+        const rowHTML = wrapper.innerHTML;
+        let width = slides[0].scrollWidth;
+        let height = slides[0].scrollHeight;
         let activeSlide = 0;
 
-        function resize() {
-            width = slides[activeSlide].scrollWidth;
-            height = slides[activeSlide].scrollHeight;
-        }
+        // три копии ряда: уезжаем за край — мгновенно перескакиваем к двойнику
+        wrapper.innerHTML = rowHTML + rowHTML + rowHTML;
 
-        resize();
-        wrapper.innerHTML = wrapperHTML + wrapperHTML + wrapperHTML;
+        const isDesktop = () => window.innerWidth > 800;
 
-        if (prevButton) prevButton.addEventListener('click', function () {
+        const place = (slide, animate = true) => {
+            if (!animate) wrapper.classList.add('no-animation');
+            wrapper.style.transform = isDesktop()
+                ? `translate3d(-${width * slide}px, 0, 0)`
+                : `translate3d(0, -${height * slide}px, 0)`;
+            if (!animate) void wrapper.offsetHeight; // reflow, чтобы прыжок применился сразу
+            wrapper.classList.remove('no-animation');
+        };
 
+        prevButton.addEventListener('click', () => {
             activeSlide--;
 
             if (activeSlide < 0) {
                 activeSlide = slides.length - 1;
-                wrapper.classList.add('no-animation');
-
-                if (window.innerWidth > 800)
-                    wrapper.style.transform = `translate3d(-${width * (activeSlide + 1)}px, 0, 0)`;
-                else
-                    wrapper.style.transform = `translate3d(0, -${height * (activeSlide + 1)}px, 0)`;
-
-                wrapper.offsetHeight;
-                wrapper.classList.remove('no-animation');
+                place(activeSlide + 1, false); // прыжок к двойнику без анимации
             }
 
-            if (window.innerWidth > 800)
-                wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
-            else
-                wrapper.style.transform =  `translate3d(0, -${height * activeSlide}px, 0)`;
+            place(activeSlide);
         });
 
-        if (nextButton) nextButton.addEventListener('click', function () {
-
+        nextButton.addEventListener('click', () => {
             activeSlide++;
 
             if (activeSlide > 2 * slides.length - 1) {
                 activeSlide = slides.length;
-                wrapper.classList.add('no-animation');
-
-                if (window.innerWidth > 800)
-                    wrapper.style.transform = `translate3d(-${width * (activeSlide - 1)}px, 0, 0)`;
-                else
-                    wrapper.style.transform = `translate3d(0, -${height * (activeSlide - 1)}px, 0)`;
-
-                wrapper.offsetHeight;
-                wrapper.classList.remove('no-animation');
+                place(activeSlide - 1, false);
             }
 
-            if (window.innerWidth > 800)
-                wrapper.style.transform =  `translate3d(-${width * activeSlide}px, 0, 0)`;
-            else
-                wrapper.style.transform =  `translate3d(0, -${height * activeSlide}px, 0)`;
+            place(activeSlide);
         });
 
-        window.addEventListener('resize', resize);
-    }
-});
+        window.addEventListener('resize', () => {
+            width = slides[activeSlide % slides.length].scrollWidth;
+            height = slides[activeSlide % slides.length].scrollHeight;
+        });
+    });
+}
+
+/* Бегущие строки: тиражируем содержимое до ширины окна, пересчитываем на ресайз */
+function initMarquee() {
+    const blocks = document.querySelectorAll('.marquee-block, .no-padding-marquee-block');
+    if (!blocks.length) return;
+
+    const rows = [];
+
+    blocks.forEach((block) => {
+        block.querySelectorAll('.marquee, .marquee-left').forEach((row) => {
+            const initialHTML = row.innerHTML;
+            rows.push({ row, initialHTML });
+        });
+    });
+
+    const fill = () => {
+        rows.forEach(({ row, initialHTML }) => {
+            row.innerHTML = initialHTML;
+
+            const wrapper = row.querySelector('.wrapper');
+            if (!wrapper) return;
+
+            const copies = Math.ceil(window.innerWidth / wrapper.clientWidth) + 1;
+            let extended = '';
+            for (let i = 0; i <= copies; i++) extended += initialHTML;
+            row.innerHTML = extended;
+        });
+    };
+
+    fill();
+    window.addEventListener('resize', fill);
+}
+
+/* Параллакс теней логотипов на первом экране */
+function initHeroParallax() {
+    const top = document.querySelector('.top');
+    const shadowRdclr = document.querySelector('.RDCLR-shadow');
+    const shadowHome = document.querySelector('.HOME-shadow');
+    if (!top || (!shadowRdclr && !shadowHome) || REDUCED_MOTION) return;
+
+    let left = 0;
+    let topOffset = 0;
+    let targetLeft = 0;
+    let targetTop = 0;
+
+    top.addEventListener('mousemove', (event) => {
+        const centerX = window.innerWidth / 2;
+        const centerY = top.clientHeight / 2;
+
+        const kh = window.innerWidth >= 1440 ? -17 : -11;
+        const kv = window.innerWidth >= 1440 ? -11 : -6;
+
+        targetLeft = kh * Math.tanh((event.clientX - centerX) / 500);
+        targetTop = kv * Math.tanh((event.clientY - centerY) / 50);
+    });
+
+    (function animate() {
+        left += (targetLeft - left) / 20;
+        topOffset += (targetTop - topOffset) / 20;
+
+        const transform = `translateY(${topOffset}px) translateX(${left}px)`;
+        if (shadowHome) shadowHome.style.transform = transform;
+        if (shadowRdclr) shadowRdclr.style.transform = transform;
+
+        requestAnimationFrame(animate);
+    })();
+}
+
+/* Направления на главной: красная тень иконки тянется за курсором,
+   иконка слегка приподнимается навстречу. Смещения пишем в CSS-переменные,
+   filter/transform читает их в style.css */
+function initDirections() {
+    const directions = document.querySelectorAll('.directions .direction');
+    if (!directions.length || REDUCED_MOTION) return;
+
+    const IDLE = { sx: 6, sy: 6, ix: 0, iy: 0 };
+    const items = [];
+
+    directions.forEach((direction) => {
+        const img = direction.querySelector('img');
+        if (!img) return;
+
+        const item = { img, current: { ...IDLE }, target: { ...IDLE } };
+        items.push(item);
+
+        direction.addEventListener('mousemove',((event) => {
+            const rect = direction.getBoundingClientRect();
+            const relX = (event.clientX - rect.left) / rect.width - 0.5;
+            const relY = (event.clientY - rect.top) / rect.height - 0.5;
+
+            // тень отклоняется от курсора, иконка — к курсору
+            item.target.sx = IDLE.sx - relX * 24;
+            item.target.sy = IDLE.sy - relY * 24;
+            item.target.ix = relX * 8;
+            item.target.iy = relY * 8;
+        }), { passive: true });
+
+        direction.addEventListener('mouseleave', () => {
+            item.target.sx = IDLE.sx;
+            item.target.sy = IDLE.sy;
+            item.target.ix = IDLE.ix;
+            item.target.iy = IDLE.iy;
+        });
+    });
+
+    (function animate() {
+        items.forEach(({ img, current, target }) => {
+            let settled = true;
+
+            for (const key of ['sx', 'sy', 'ix', 'iy']) {
+                current[key] += (target[key] - current[key]) / 12;
+                if (Math.abs(target[key] - current[key]) > 0.05) settled = false;
+            }
+
+            if (!settled) {
+                img.style.setProperty('--sx', `${current.sx.toFixed(2)}px`);
+                img.style.setProperty('--sy', `${current.sy.toFixed(2)}px`);
+                img.style.setProperty('--ix', `${current.ix.toFixed(2)}px`);
+                img.style.setProperty('--iy', `${current.iy.toFixed(2)}px`);
+            }
+        });
+
+        requestAnimationFrame(animate);
+    })();
+}
+
+/* Валидация формы записи и попап успеха */
+function initForm() {
+    const popup = document.querySelector('.popup');
+    const messageField = document.querySelector('.message-text');
+    const overlay = document.querySelector('.overlay');
+    const closeButton = document.querySelector('.popup-close');
+
+    if (!popup || !messageField || !overlay) return;
+
+    const closePopup = () => {
+        document.documentElement.classList.remove('popup-active');
+        popup.setAttribute('aria-hidden', 'true');
+    };
+
+    const openPopup = () => {
+        document.documentElement.classList.add('popup-active');
+        popup.setAttribute('aria-hidden', 'false');
+    };
+
+    overlay.addEventListener('click', closePopup);
+    if (closeButton) closeButton.addEventListener('click', closePopup);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closePopup();
+    });
+
+    document.querySelectorAll('form').forEach((form) => {
+        const elements = form.elements;
+        if (!elements) return;
+
+        const flagError = (el) => {
+            el.classList.add('error');
+            el.addEventListener('change', () => el.classList.remove('error'), { once: true });
+        };
+
+        const validate = () => {
+            let valid = true;
+
+            if (form.status && form.status.selectedIndex === 0) {
+                flagError(form.querySelector('.select'));
+                valid = false;
+            }
+
+            for (const el of elements) {
+                // textarea не проверяем: необязательное поле
+                if (el.type === 'email' || el.type === 'tel' || el.type === 'text') {
+                    if (!el.value.trim()) {
+                        flagError(el);
+                        valid = false;
+                    }
+                }
+
+                if (el.type === 'checkbox' && !el.checked) {
+                    flagError(form.querySelector('.checkbox'));
+                    valid = false;
+                }
+            }
+
+            return valid;
+        };
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (!validate()) return;
+
+            messageField.innerHTML = `
+            <h2 class="black">Поздравляем!</h2>
+            <p>Вы записались на&nbsp;RDCLR.HOME</p>`;
+            openPopup();
+        });
+    });
+}
+
+/* Showreel: вставляем YouTube только по клику */
+function initReel() {
+    document.querySelectorAll('.reel').forEach((reel) => {
+        let loaded = false;
+
+        const embed = () => {
+            if (loaded) return;
+
+            reel.innerHTML = `<iframe width="${reel.clientWidth}" height="${reel.clientHeight}"
+                src="https://www.youtube.com/embed/d-DXr4cPLI4?autoplay=1"
+                title="Red Collar showreel"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>`;
+            loaded = true;
+        };
+
+        reel.addEventListener('click', embed);
+        reel.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                embed();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            const iframe = reel.querySelector('iframe');
+            if (!iframe) return;
+
+            iframe.width = reel.clientWidth;
+            iframe.height = reel.clientHeight;
+        });
+    });
+}
+
+/* Кнопка «заполнить заявку» в карточке лекции скроллит к форме */
+function initCardScroll() {
+    const target = document.querySelector('#signup');
+    if (!target) return;
+
+    document.querySelectorAll('.card button').forEach((button) => {
+        button.addEventListener('click', () => {
+            target.scrollIntoView({
+                behavior: REDUCED_MOTION ? 'auto' : 'smooth'
+            });
+        });
+    });
+}
